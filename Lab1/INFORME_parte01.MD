@@ -1,28 +1,33 @@
 
-# Título
+# Trabajo Practico nº 1 - Parte I - Conguración y Análisis de tráco IPv4/IPv6
 
-**Nombres**  
-_Nombre Apellidos; usar iniciales para el segundo nombre_  
-**Nombre del grupo**, si corresponde  
+**Institucion: UNC - Facultad de Ciencias Exactas, Físicas y Naturales**  
+**Materia: Redes de Computadoras**
 
-**Nombre del centro educativo o institución**  
-**Nombre del curso o materia** (para publicaciones de alumnos)  
-**Profesores** (para publicaciones de alumnos)  
-**Fecha** (para publicaciones de alumnos)  
+**Profesores**
+- Facundo Oliva Cuneo (Teorico).
+- Santiago Martín Henn (Laboratorios).
+
+**Fecha: 27-03-2025** 
 
 ---
+## Nombre del grupo: Sin Latencia Team** 
 
-### Información de los autores
- 
-- **Información de contacto**: _correo electrónico_  
+## Nombres de los integrantes**  
+- Efrain G. Veliz S.
+- Elio N. Ludueña
+
+## Información de los autores
+- efrain.veliz@mi.unc.edu.ar
+- nicoluduena@mi.unc.edu.ar
+- 
 
 ---
 
 ## Resumen
+En el presente trabajo se aborda la configuración de un entorno de red con soporte dual stack, implementando los protocolos IPv4 e IPv6 mediante el uso de emuladores o simuladores de redes. Se analizan las diferencias en la gestión del tráfico de red, incluyendo el comportamiento de protocolos clave como ARP (Address Resolution Protocol) en IPv4, NDP (Neighbor Discovery Protocol) en IPv6 e ICMP (Internet Control Message Protocol) en ambos casos. Además, se implementa la asignación dinámica de direcciones utilizando el protocolo DHCP, evaluando su funcionamiento tanto en IPv4 (DHCPv4) como en IPv6 (DHCPv6). A lo largo del estudio, se examinan las interacciones entre estos protocolos y su impacto en la conectividad y eficiencia de la red.
 
-Un párrafo, sin sangría. Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto Escribe aquí tu texto. 
-
-**Palabras clave**: primera línea con sangría, _Escribe, aquí, tu texto_
+**Palabras clave**: Dual Stack IPv4, IPv6, ARP (Address Resolution Protocol), NDP (Neighbor Discovery Protocol), ICMP (Internet Control Message Protocol), DHCP (Dynamic Host Configuration Protocol), DHCPv4, DHCPv6, Emulador de red, Simulador de red, Tráfico de red, Direcciones IP, Subnetting, Router, Switch, Configuración de red, Topología de red, Paquetes de datos, Latencia, Seguridad en redes.
 
 ---
 
