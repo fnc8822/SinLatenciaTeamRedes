@@ -33,8 +33,11 @@ En el presente trabajo se aborda la configuración de un entorno de red con sopo
 ---
 
 ## Introducción
+En el contexto actual de las redes de computadoras, la coexistencia de los protocolos **IPv4** e **IPv6** es una necesidad fundamental para garantizar la interoperabilidad y la transición entre ambas tecnologías. Este trabajo práctico tiene como objetivo explorar la **configuración de un entorno de red dual stack**, utilizando herramientas de **simulación y emulación** para analizar el tráfico de red y el comportamiento de diversos protocolos.  
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit amet aliquet vestibulum, enim ante consectetur enim, vel sollicitudin odio risus vel libero. Integer eget ipsum sed eros luctus laoreet vel vel leo. Fusce ut dapibus nisl. Aliquam erat volutpat. Donec in elit non justo convallis vestibulum. Fusce malesuada, sapien nec consequat dignissim, lorem eros suscipit nulla, non gravida magna libero id turpis. Suspendisse potenti. Maecenas quis mauris dui. Nunc accumsan, lorem vitae posuere fringilla, lacus mauris convallis magna, nec interdum nunc tortor vel sem. Integer sit amet sollicitudin ipsum. In hac habitasse platea dictumst. Sed vitae est id dui fringilla mollis. Vivamus varius vestibulum consequat. Sed posuere consequat dolor, sit amet suscipit lorem cursus id.
+A lo largo del desarrollo del trabajo, se estudiará el funcionamiento de **ARP** (*Address Resolution Protocol*) en **IPv4** y **NDP** (*Neighbor Discovery Protocol*) en **IPv6**, así como la comunicación a través de **ICMP** (*Internet Control Message Protocol*). Además, se implementará la **asignación dinámica de direcciones** mediante el uso de **DHCPv4** y **DHCPv6**, evaluando su impacto en la configuración y administración de redes.  
+
+Para la implementación y análisis, se utilizarán herramientas como **GNS3**, **Packet Tracer** y **CORE**, que permiten la creación y prueba de escenarios de red de manera controlada. Finalmente, se realizarán pruebas de conectividad y capturas de tráfico para examinar el intercambio de información entre los dispositivos, comprendiendo mejor el proceso de resolución de direcciones y la gestión de los paquetes de datos en un entorno de **red dual stack**.  
 
 ---
 
