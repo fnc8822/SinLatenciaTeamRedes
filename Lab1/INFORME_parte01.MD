@@ -16,11 +16,12 @@
 ## Nombres de los integrantes**  
 - Efrain G. Veliz S.
 - Elio N. Ludueña
+- Juan I. Sassi 
 
 ## Información de los autores
 - efrain.veliz@mi.unc.edu.ar
 - nicoluduena@mi.unc.edu.ar
-- 
+- juan.sassi@mi.unc.edu.ar
 
 ---
 
