@@ -41,13 +41,23 @@ Para la implementación y análisis, se utilizarán herramientas como **GNS3**, 
 
 ---
 
-# Marco teórico / Modelo / Metodología
+### Para luego realizar las actividades, se planteo la siguiente red y Tabla de asignación de direcciones
+<br>
+<p align="center">
+    <img src="./imagenes/01_red.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 1: Red de estudio.</p>
+<br>
+<br>
+<p align="center">
+    <img src="./imagenes/02_tabla.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 2: tabla de asignaciones de direcciones.</p>
+<br>
 
-## Nivel de título 2
+## 1. Desarrollar un marco teórico resumido, suficiente para fundamentar los procedimientos a realizar.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit amet aliquet vestibulum, enim ante consectetur enim, vel sollicitudin odio risus vel libero. Integer eget ipsum sed eros luctus laoreet vel vel leo. Fusce ut dapibus nisl. Aliquam erat volutpat. Donec in elit non justo convallis vestibulum.
-
-`codigo`
+--- 
 
 ### Nivel de título 3
 
