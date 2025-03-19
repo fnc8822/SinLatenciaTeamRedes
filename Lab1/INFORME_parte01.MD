@@ -180,6 +180,44 @@ Para comprobar la conectividad entre todos los hosts, se enviaron tres paquetes 
 ## 6. 
 
 ## 7.
+Los tipos de mensajes NDP observados son:
+- Neighbor Solicitation (NS): Enviado por el host que quiere conocer la dirección física de otro nodo.
+- Neighbor Advertisement (NA): Respuesta al NS, proporcionando la dirección física.
+<br>
+<p align="center">
+    <img src="./imagenes/NDPh1.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura x: Datagrama NDP en h1.</p>
+<br>
+<br>
+<p align="center">
+    <img src="./imagenes/NDPh3.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura x: Datagrama NDP en h3.</p>
+<br>
+En IPv6 el protocolo NDP (Neighbor Discovery Protocol) reemplaza al ARP usado en IPv4. NDP utiliza mensajes ICMPv6 para descubrir nodos en la red, resolver direcciones de enlace y realizar el resto de sus funciones.
+
+Funciones Principales de NDP:
+- Descubrimiento de vecinos: Permite que los nodos descubran la dirección de enlace (MAC) de otros dispositivos en la misma red.
+- Detección de direcciones duplicadas (DAD): Verifica que una dirección IPv6 asignada no esté ya en uso.
+- Descubrimiento de routers: Los hosts pueden encontrar routers en la red mediante mensajes RS y RA.
+- Redirección: Permite a los routers redirigir el tráfico a rutas más óptimas.
+
+En IPv6 no existe el concepto de broadcast, por lo que se utiliza el mecanismo de multicast para reemplazar esa función. En lugar de enviar un paquete a todas las direcciones de la red, se envía a un grupo específico de direcciones multicast, lo que permite dirigir el tráfico solo a los dispositivos interesados en recibirlo, como es el caso de la dirección multicast ff02::1 para todos los nodos en el enlace. Este enfoque optimiza el uso de la red y reduce el tráfico innecesario.
+
+- Direcciones Link-local:
+Se utilizan para la comunicación entre dispositivos en el mismo segmento de red. Se configuran automáticamente y tienen el prefijo fe80::/10. Estas direcciones no son ruteables fuera del enlace local y son esenciales para funciones básicas como el descubrimiento de vecinos.
+- Direcciones Unique-local:
+Las direcciones unique-local son análogas a las direcciones privadas en IPv4. Definidas en el rango fc00::/7, se usan en redes internas o corporativas. No se rutean en Internet, lo que permite que los dispositivos se comuniquen de forma segura dentro de una red privada sin exponer información a la red pública.
+- Direcciones Globales:
+Las direcciones globales son ruteables a nivel mundial y permiten la comunicación a través de Internet. Generalmente se asignan con el prefijo 2000::/3 y son asignadas por proveedores de servicios de Internet. Estas direcciones facilitan la identificación única de dispositivos en cualquier parte del mundo.
+
+| Característica   | Link-Local | Unique-Local | Global |
+| --------- | ---------- | ---------- | ---------- |
+| **Prefijo** | fe80::/10 | fc00::/7 | 2000::/3 |
+| **Ruteabilidad** | Solo en el enlace local | Solo en redes privadas | Ruteable en Internet |
+| **Configuración**| Automática (SLAAC) | Manual o automática | Asignada por ISP o administrativamente |
+| **Uso** | Comunicación en el mismo segmento | Redes internas, comunicación privada | Comunicación global, acceso a Internet  |
 
 
 --- 
