@@ -62,46 +62,6 @@ Para la implementación y análisis, se utilizarán herramientas como **GNS3**, 
 
 ## 1. Desarrollar un marco teórico resumido, suficiente para fundamentar los procedimientos a realizar.
 
---- 
-
-### Nivel de título 3
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit amet aliquet vestibulum, enim ante consectetur enim, vel sollicitudin odio risus vel libero. Integer eget ipsum sed eros luctus laoreet vel vel leo. Fusce ut dapibus nisl. Aliquam erat volutpat. Donec in elit non justo convallis vestibulum.
-
-| Ejemplo | Tabla |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-
-```
-// Más código
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "age": 25
-}
-```
-
----
-
-## Resultados
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit amet aliquet vestibulum, enim ante consectetur enim, vel sollicitudin odio risus vel libero. Integer eget ipsum sed eros luctus laoreet vel vel leo. Fusce ut dapibus nisl. Aliquam erat volutpat. Donec in elit non justo convallis vestibulum.
-
----
-
-## Discusión y conclusiones
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit amet aliquet vestibulum, enim ante consectetur enim, vel sollicitudin odio risus vel libero. Integer eget ipsum sed eros luctus laoreet vel vel leo. Fusce ut dapibus nisl. Aliquam erat volutpat. Donec in elit non justo convallis vestibulum.
-
-## Referencias
-
-[1] Consultar [Normas APA](https://normas-apa.org/referencias/)
-
-[2] ...
-
-[3] ...
-
 ## 2. Diagrama de red en el software Cisco Packet Tracer.
 En este trabajo se ha realizó la construcción del diagrama de red propuesto utilizando el software de simulación Cisco Packet Tracer. Este software permite diseñar, configurar y probar redes de computadoras en un entorno virtual antes de implementarlas físicamente.
 El diseño de la red incluye un router que actúa como intermediario entre los dispositivos, un switch que permite la conexión y comunicación entre múltiples dispositivos finales y tres hosts (h1, h2 y h3) que representan computadoras conectadas a la red.
@@ -220,3 +180,44 @@ Para comprobar la conectividad entre todos los hosts, se enviaron tres paquetes 
 ## 6. 
 
 ## 7.
+
+
+--- 
+
+### Nivel de título 3
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit amet aliquet vestibulum, enim ante consectetur enim, vel sollicitudin odio risus vel libero. Integer eget ipsum sed eros luctus laoreet vel vel leo. Fusce ut dapibus nisl. Aliquam erat volutpat. Donec in elit non justo convallis vestibulum.
+
+| Ejemplo | Tabla |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+```
+// Más código
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
+
+---
+
+## Resultados
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit amet aliquet vestibulum, enim ante consectetur enim, vel sollicitudin odio risus vel libero. Integer eget ipsum sed eros luctus laoreet vel vel leo. Fusce ut dapibus nisl. Aliquam erat volutpat. Donec in elit non justo convallis vestibulum.
+
+---
+
+## Discusión y conclusiones
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit amet aliquet vestibulum, enim ante consectetur enim, vel sollicitudin odio risus vel libero. Integer eget ipsum sed eros luctus laoreet vel vel leo. Fusce ut dapibus nisl. Aliquam erat volutpat. Donec in elit non justo convallis vestibulum.
+
+## Referencias
+
+[1] Consultar [Normas APA](https://normas-apa.org/referencias/)
+
+[2] ...
+
+[3] ...
