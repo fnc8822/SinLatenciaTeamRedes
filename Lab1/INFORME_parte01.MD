@@ -11,18 +11,19 @@
 **Fecha: 27-03-2025** 
 
 ---
-## Nombre del grupo: Sin Latencia Team** 
+## Nombre del grupo: Sin Latencia Team
 
-## Nombres de los integrantes**  
+## Nombres de los integrantes
 - Efrain G. Veliz S.
 - Elio N. Ludueña
 - Juan I. Sassi 
+- Franco L. Cirrincione
 
 ## Información de los autores
 - efrain.veliz@mi.unc.edu.ar
 - nicoluduena@mi.unc.edu.ar
 - juan.sassi@mi.unc.edu.ar
-
+- francocirrincione@mi.unc.edu.ar
 ---
 
 ## Resumen
@@ -52,8 +53,36 @@ Para la implementación y análisis, se utilizarán herramientas como **GNS3**, 
 <p align="center">
     <img src="./imagenes/02_tabla.png" alt="ISI" width="600"/>
 </p>
-<p align="center">Figura 2: tabla de asignaciones de direcciones.</p>
+<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
 <br>
+
+---
+
+## Desarrollo
+
+3. Los emuladores y simuladores son herramientas de prueba en entornos virtuales utilizadas para recrear escenarios de red, con diferencias importantes en funcionamiento y casos de uso.
+
+**Simulador:**  
+
+Modelado abstracto: Recrea el comportamiento de la red a traves de modelos matematicos o logicos, permitiendo analizar el comportamiento teorico de protocolos y topologias sin implementacion en el entorno fisico.
+Son particularmente utiles para el estudio de rendimiento, escalabilidad y el impacto de cambios en la red en condiciones controladas, asi como tambien para la investigacion y el diseño, dado que permiten experimentar con distintos escenarios sin los costos asociados a la implementacion fisica ni recrear cada etapa del hardware.
+
+**Emulador:**
+
+Recreación Fiel del Entorno Real: Intenta replicar tanto el hardware como el software de los dispositivos de la red, permitiendo pruebas mucho mas fieles a los sistemas reales.
+Se utilizan para probar interoperabilidad, rendimiento y funcionalidad de equipos o servicios en condiciones cercanas a las reales, lo que es un paso clave en la validacion de sistemas antes de su despliegue en produccion. 
+Debido a la emulacion de componentes reales en forma fisica, en general requieren mas recursos y son mas complejos que los simuladores, con el beneficio de una presicion mayor.
+
+| Característica | Emuladores | Simuladores |
+| ----------- | ----------- | ----------- |
+| **Nivel de Abstracción** | Replica entorno real | Modela comportamiento |
+| **Precisión** | Alta precisión real | Aproximacion teórica |
+| **Recursos** | Más recursos requeridos | Menos recursos |
+| **Velocidad** | Lento por emulación | Rápido en simulación |
+| **Uso** | Validación y depuración | Análisis y diseño |
+| **Tráfico Real** | Soporta tráfico real | Sin tráfico real |
+| **Ejemplos** | Mininet, CORE, GNS3 | OMNeT++, Packet Tracer |
+
 
 ## 1. Desarrollar un marco teórico resumido, suficiente para fundamentar los procedimientos a realizar.
 
