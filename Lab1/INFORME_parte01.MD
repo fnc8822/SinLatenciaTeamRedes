@@ -177,7 +177,30 @@ Para comprobar la conectividad entre todos los hosts, se enviaron tres paquetes 
     <img src="./imagenes/11_router_IPv6.png" alt="ISI" width="600"/>
 </p>
 
-## 6. 
+## 6. # Análisis de Comunicaciones en la Red
+# a) Comunicaciones ARP observadas
+Durante la comunicación ICMP, se observan mensajes ARP (Address Resolution Protocol) que son cruciales para la resolución de direcciones IP a direcciones MAC. Este proceso ocurre cuando un dispositivo necesita conocer la dirección MAC de otro dispositivo dentro de la misma red local.
+Por ejemplo, cuando PC0 quiere enviar un mensaje a PC1 (que tiene la IP 192.168.2.10), primero envía un ARP Request preguntando "¿Quién tiene 192.168.2.10?". PC1, al recibir este ARP Request, responde con su dirección MAC a través de un ARP Reply. Este mecanismo es fundamental para que los dispositivos se comuniquen dentro de una red.
+
+# b) Direcciones IP en los datagramas
+En los paquetes ICMP (como los generados por los comandos de ping), podemos observar las direcciones IP de origen y destino. En este caso específico, cuando PC0 realiza un ping a PC1, se verá un paquete ICMP donde la dirección de origen es la de PC0 (192.168.1.10) y la dirección de destino es la de PC1 (192.168.2.10). Las direcciones IP son esenciales para la correcta entrega del paquete a través de diferentes redes.
+# c) Determinación de la comunicación entre hosts por parte del enrutador
+El enrutador juega un papel crucial en la comunicación entre redes distintas. Para determinar cómo se debe enviar un paquete de un host a otro, el enrutador consulta su tabla de enrutamiento. En este caso, PC0 y PC1 están en redes diferentes (192.168.1.x y 192.168.2.x), por lo que el enrutador debe tomar decisiones basadas en la dirección IP de destino. El enrutador sabe que debe reenviar el tráfico de PC0 hacia la red de PC1, ya que la IP de destino (192.168.2.10) pertenece a la red 192.168.2.x.
+
+# d) Función del switch y por qué no tiene direcciones IP
+El switch es un dispositivo que opera en la capa 2 del modelo OSI, es decir, en la capa de enlace de datos. Su principal función es conectar dispositivos dentro de la misma red local (LAN) y reenviar tramas de datos entre ellos. No necesita direcciones IP porque no está involucrado en la toma de decisiones sobre el enrutamiento de paquetes entre diferentes redes. El switch utiliza las direcciones MAC de los dispositivos para determinar cómo reenviar las tramas de manera eficiente dentro de la misma red.
+# e, f, g) Contenido de las tablas ARP en cada equipo
+Las tablas ARP son esenciales para la comunicación dentro de una red local, ya que permiten mapear direcciones IP a direcciones MAC. Al analizar las tablas ARP en los dispositivos, podemos ver qué direcciones MAC conocen los diferentes equipos y cómo estas están asociadas con direcciones IP específicas.
+PC0 solo conoce la dirección MAC de su gateway (el router en la dirección 192.168.1.11), ya que no ha tenido necesidad de comunicarse directamente con otros dispositivos en la red.
+PC1, por otro lado, conoce tanto la dirección MAC de PC2 (192.168.2.11) como la del router (192.168.2.12), dado que ambas son necesarias para su funcionamiento dentro de la red.
+PC2 solo tiene registrada la dirección MAC de PC1 (192.168.2.10) porque se ha comunicado directamente con él, pero aún no ha enviado tráfico hacia fuera de su red, por lo que no tiene la MAC del router registrada.
+# h) Direcciones de broadcast en IPv4
+Las direcciones de broadcast en IPv4 son direcciones especiales utilizadas para enviar mensajes a todos los dispositivos dentro de una red local. Por ejemplo, la dirección 192.168.1.255 es una dirección de broadcast en la red 192.168.1.0/24. Esto permite que los paquetes se distribuyan a todos los dispositivos dentro de esa red, lo cual es útil para servicios como ARP y DHCP.
+## i) Direcciones multicast en IPv4
+Las direcciones multicast en IPv4 se utilizan para enviar tráfico a un grupo de dispositivos en lugar de a un único dispositivo. Estas direcciones pertenecen al rango 224.0.0.0 a 239.255.255.255. Un ejemplo común de una dirección multicast es 224.0.0.1, que se usa para enviar tráfico a todos los hosts en la red local.
+
+El análisis del tráfico ICMP y las tablas ARP nos muestra cómo los dispositivos dentro de una red se comunican y cómo los mecanismos de ARP y enrutamiento facilitan esta comunicación. Las direcciones IP y MAC, junto con los conceptos de broadcast y multicast, son esenciales para el funcionamiento eficiente de la red.
+
 
 ## 7.
 Los tipos de mensajes NDP observados son:
