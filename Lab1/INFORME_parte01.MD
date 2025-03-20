@@ -185,12 +185,6 @@ Por ejemplo, cuando PC0 quiere enviar un mensaje a PC1 (que tiene la IP 192.168.
  b) Direcciones IP en los datagramas
 En los paquetes ICMP (como los generados por los comandos de ping), podemos observar las direcciones IP de origen y destino. En este caso específico, cuando PC0 realiza un ping a PC1, se verá un paquete ICMP donde la dirección de origen es la de PC0 (192.168.1.10) y la dirección de destino es la de PC1 (192.168.2.10). Las direcciones IP son esenciales para la correcta entrega del paquete a través de diferentes redes.
 
-https://github.com/fnc8822/SinLatenciaTeamRedes/blob/main/Imagen%20de%20WhatsApp%202025-03-19%20a%20las%2023.18.18_8b76b608.jpg?raw=true
-
-https://github.com/fnc8822/SinLatenciaTeamRedes/blob/main/Imagen%20de%20WhatsApp%202025-03-19%20a%20las%2023.24.39_9cc92291.jpg
-
-https://github.com/fnc8822/SinLatenciaTeamRedes/blob/main/Imagen%20de%20WhatsApp%202025-03-19%20a%20las%2023.28.09_3a752d6f.jpg
-
  c) Determinación de la comunicación entre hosts por parte del enrutador
 El enrutador juega un papel crucial en la comunicación entre redes distintas. Para determinar cómo se debe enviar un paquete de un host a otro, el enrutador consulta su tabla de enrutamiento. En este caso, PC0 y PC1 están en redes diferentes (192.168.1.x y 192.168.2.x), por lo que el enrutador debe tomar decisiones basadas en la dirección IP de destino. El enrutador sabe que debe reenviar el tráfico de PC0 hacia la red de PC1, ya que la IP de destino (192.168.2.10) pertenece a la red 192.168.2.x.
 
