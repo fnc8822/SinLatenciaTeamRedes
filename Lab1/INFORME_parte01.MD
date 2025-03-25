@@ -61,6 +61,8 @@ Para la implementación y análisis, se utilizarán herramientas como **GNS3**, 
 ## Desarrollo
 
 ## 1. Desarrollar un marco teórico resumido, suficiente para fundamentar los procedimientos a realizar.
+desde 18.1 al 18.6
+
 
 ## 2. Diagrama de red en el software Cisco Packet Tracer.
 En este trabajo se ha realizó la construcción del diagrama de red propuesto utilizando el software de simulación Cisco Packet Tracer. Este software permite diseñar, configurar y probar redes de computadoras en un entorno virtual antes de implementarlas físicamente.
