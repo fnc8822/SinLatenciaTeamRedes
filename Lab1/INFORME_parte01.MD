@@ -283,6 +283,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit 
 
 [1] Consultar [Normas APA](https://normas-apa.org/referencias/)
 
-[2] ...
+[2] 
 
-[3] ...
+[3] 
