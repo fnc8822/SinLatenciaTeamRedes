@@ -57,9 +57,12 @@ Para la implementación y análisis, se utilizarán herramientas como **GNS3**, 
 <br>
 
 ---
-
 ## Desarrollo
 
+<<<<<<< HEAD
+## 1. Marco teórico resumido
+### Funciones basicas de los protocolos.
+=======
 ## 1. Marco Teórico - PARTE V - Protocolos de interconexión.
 ### 1.1) Funciones básicas de los protocolos
 Es posible agrupar las funciones de los protocolos dentro de las siguientes categorias:
@@ -98,10 +101,25 @@ Es posible agrupar las funciones de los protocolos dentro de las siguientes cate
     - Seguridad: Restringe el acceso y protege la información transmitida.
 --- 
 ### 1.2) Principio de la interconexión entre redes.
+>>>>>>> b9f2fb6b2112d41e876ce431502bddd523f95d45
 
+<<<<<<< HEAD
+    
+### Principio de la interconexión entre redes.
+=======
 ---
 ### 1.3) Interconexión entre redes sin conexión.
+>>>>>>> b9f2fb6b2112d41e876ce431502bddd523f95d45
 
+<<<<<<< HEAD
+### Interconexión entre redes sin conexión.
+
+### El protocolo Internet (IPv4).
+
+### IPv6.
+
+---
+=======
 ---
 ### 1.4) El protocolo internet (IPv4).
 
@@ -109,6 +127,7 @@ Es posible agrupar las funciones de los protocolos dentro de las siguientes cate
 ### 1.5) IPv6.
 
 ---
+>>>>>>> b9f2fb6b2112d41e876ce431502bddd523f95d45
 ## 2. Diagrama de red en el software Cisco Packet Tracer.
 En este trabajo se ha realizó la construcción del diagrama de red propuesto utilizando el software de simulación Cisco Packet Tracer. Este software permite diseñar, configurar y probar redes de computadoras en un entorno virtual antes de implementarlas físicamente.
 El diseño de la red incluye un router que actúa como intermediario entre los dispositivos, un switch que permite la conexión y comunicación entre múltiples dispositivos finales y tres hosts (h1, h2 y h3) que representan computadoras conectadas a la red.
