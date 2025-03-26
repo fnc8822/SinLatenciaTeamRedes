@@ -25,3 +25,107 @@
 - francocirrincione@mi.unc.edu.ar
 ---
 
+
+### Switch WS-C2950
+- Modelos y Puertos
+  - **WS-C2950-12:** 12 puertos 10/100 Mbps  
+  - **WS-C2950-24:** 24 puertos 10/100 Mbps  
+  - **WS-C2950SX-24:** 24 puertos 10/100 Mbps con 2 uplinks 1000BASE-SX  
+  - **WS-C2950T-48:** 48 puertos 10/100 Mbps con 2 puertos 10/100/1000BASE-T  
+  - **WS-C2950SX-48:** 48 puertos 10/100 Mbps con 2 uplinks 1000BASE-SX  
+
+- Rendimiento
+  - **Ancho de banda de conmutación:**  
+    - Entre 8.8 Gbps y 13.6 Gbps según el modelo.
+  - **Tasas de reenvío:**  
+    - Desde 1.8 Mpps hasta 10.1 Mpps (basado en paquetes de 64 bytes).
+
+- Memoria y Capacidad
+  - 16 MB de DRAM y 8 MB de Flash.
+  - 8 MB de buffer compartido entre puertos.
+  - Capacidad de hasta 8000 direcciones MAC.
+
+- Gestión y Protocolos
+  - **Gestión:**  
+    - Cisco Device Manager (interfaz web) y Cisco Network Assistant.
+  - **Protocolos de administración:**  
+    - Soporte para SNMP (v1, v2 y v3 no criptográfico) y Telnet.
+    - Amplia variedad de MIBs para integración en plataformas de gestión.
+
+- Seguridad
+  - **Autenticación y Acceso:**  
+    - 802.1x para control de acceso.
+    - Integración con TACACS+ y RADIUS.
+  - **Cifrado y Protección:**  
+    - SSH versión 2 (SSHv2) para sesiones seguras.
+    - Port security y Private VLAN Edge para segmentación y protección de puertos.
+
+- Calidad de Servicio (QoS)
+  - Soporta clasificación de tramas basada en IEEE 802.1p y re-clasificación con valores predeterminados.
+  - Cuatro colas por puerto con:
+    - **Strict Priority Scheduling:** Para aplicaciones sensibles como VoIP.
+    - **Weighted Round Robin (WRR):** Garantiza atención a tráfico de baja prioridad.
+
+- Conectividad Física y Estándares
+  - **Factor de forma:**  
+    - 1RU, para montaje en racks estándar.
+  - **Conectores:**  
+    - RJ-45 para 10BASE-T/100BASE-TX.
+    - MT-RJ para los modelos SX (1000BASE-SX).
+  - **Estándares soportados:**  
+    - IEEE 802.1x, 802.3x, 802.1D, 802.1p, 802.1Q, 802.3u, 802.3ad, y 1000BASE-X.
+  - **Redundancia de energía:**  
+    - Compatibilidad con sistemas redundantes (Cisco RPS 675).
+
+---
+
+### Procedimiento
+- a. Conectar una PC al puerto de consola del switch Cisco a 9600 baudios utilizando PUTTY.
+  - Conectar el puerto de consola a una conversor a interfaz serial.
+<p align="center">
+    <img src="./capturas/Puerto.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
+<br>
+  - (Opcional) En caso de no tener interfaz serial, utilizar un conversor a USB. 
+  - Conectar a la computadora para la conexion.
+  - Utilizar administrador de dispositivos (Windows) o setserial (Linux) para determinar el puerto
+  - Abrir putty, utilizar la siguiente configuracion:
+    - Connection type: Serial
+    - Serial line: el puerto determinado en el paso anterior.
+    - Speed: 9600
+  - (Opcional) Guardar la configuracion para uso en el futuro.
+  - Open
+
+- b. Acceder a las opciones de administración del switch y modificar claves de acceso.
+  - 
+<br>
+<p align="center">
+    <img src="./capturas/Passwords.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
+<br>
+
+<p align="center">
+    <img src="./capturas/Passwords2.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
+<br>
+
+- c.Conectar dos computadoras al switch, configurar una red y testear conectividad.
+
+<p align="center">
+    <img src="./capturas/Ping.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
+<br>
+
+### Actividades de parte 1
+
+- Tablas arp:
+<br>
+<p align="center">
+    <img src="./capturas/arp.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
+<br>
