@@ -60,8 +60,39 @@ Para la implementación y análisis, se utilizarán herramientas como **GNS3**, 
 
 ## Desarrollo
 
-## 1. Desarrollar un marco teórico resumido, suficiente para fundamentar los procedimientos a realizar.
-desde 18.1 al 18.6
+## 1. Marco Teórico - PARTE V - Protocolos de interconexión.
+### Funciones básicas de los protocolos
+Es posible agrupar las funciones de los protocolos dentro de las siguientes categorias:
+- **Encapsulamiento:** Casi en todos los protocolos los datos son transferidos en bloques, tambien llamados PDU(Protocol Data Unit).
+    Los PDU ademas de los datos, deben tener informacion de control, que se clasifica en:
+    - Dirección: del emisor y/o destinatario.
+    - Código de deteccion de errores: secuencia de comprobación de la trama para detectar errores.
+    - Control de Protocolo: info adicional para implementar los protocolos.
+- **Fragmentacion y reensamblado:** La fragmentacion se produce al separar el mensaje en bloques de menor tamaño para su transmisión. Algunas Razones son las siguientes:
+    - Tamaño limitado: solo se acepta bloques de un tamaño maximo.
+    - Control de errores: mas eficiente la retansmisión del bloque cuando es de menos bits.
+    - Acceso más equitativo: trabajando con recursos compartidos, se evita la monopolizacion del medio con tamaño grandes de bloques. 
+    - Memoria: El receptor puede reservar memoria temporal mas chica.
+    - Paradas técnicas: se puede realizar cada cierto periodo de tiempo controles y operaciones de reinicio/recuperacion.
+  **>Desventaja:** 
+    - Sobre carga: cuanto más chico el bloque más % de información de control tendra y menos % de Datos.
+    - Interrupciones: a mas pequeños los bloques, mas interrupciones generaran.
+    - Tiempos: de ser as chicos los bloques mas tiempo llevara procesarlos, y ademas mas trabajo a la hora de reensamblarlos.
+- **Control de conexión:** 
+- **Entrega ordenada:**
+- **Control de flujo:**
+- **Control de errores:**
+- **Direccionamiento:**
+- **Multiplexación:**
+- **Servicios de transmisión:**
+
+### Principio de la interconexión entre redes.
+
+### Interconexión entre redes sin conexión.
+
+### El protocolo internet (IPv4).
+
+### IPv6.
 
 
 ## 2. Diagrama de red en el software Cisco Packet Tracer.
