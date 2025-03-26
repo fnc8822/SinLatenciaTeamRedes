@@ -61,7 +61,7 @@ Para la implementación y análisis, se utilizarán herramientas como **GNS3**, 
 ## Desarrollo
 
 ## 1. Marco Teórico - PARTE V - Protocolos de interconexión.
-### Funciones básicas de los protocolos
+### 1.1) Funciones básicas de los protocolos
 Es posible agrupar las funciones de los protocolos dentro de las siguientes categorias:
 - **Encapsulamiento:** Casi en todos los protocolos los datos son transferidos en bloques, tambien llamados PDU(Protocol Data Unit).
     Los PDU ademas de los datos, deben tener informacion de control, que se clasifica en:
@@ -78,23 +78,37 @@ Es posible agrupar las funciones de los protocolos dentro de las siguientes cate
     - Sobre carga: cuanto más chico el bloque más % de información de control tendra y menos % de Datos.
     - Interrupciones: a mas pequeños los bloques, mas interrupciones generaran.
     - Tiempos: de ser as chicos los bloques mas tiempo llevara procesarlos, y ademas mas trabajo a la hora de reensamblarlos.
-- **Control de conexión:** 
-- **Entrega ordenada:**
-- **Control de flujo:**
-- **Control de errores:**
-- **Direccionamiento:**
-- **Multiplexación:**
-- **Servicios de transmisión:**
+- **Control de conexión:** Se requiere un control de conexión en especial cuando se anticipa un intercambio de datos voluminosos.Primeramente se realiza una solicitud de conexión, y en algunos casos una negociacion para establecer la sintaxis, semántica y temporizacion de la comunicación. Posterior al envio de datos y la confirmacion de recepcion, se envia una solicitud de terminacion de la conexion que tambien va acompañada de la aceptacion de la misma.
+- **Entrega ordenada:** Es esencial en protocolos orientados a conexión para garantizar que las PDU (unidades de datos de protocolo) lleguen en el mismo orden en que fueron enviadas. Debido a que las PDU pueden tomar distintos caminos en la red, es necesario asignarles números de secuencia únicos y consecutivos para permitir su reordenamiento en el destino. Sin embargo, dado que el número de secuencia es finito y cíclico, debe ser lo suficientemente grande para evitar conflictos, pudiendo incluso requerir el doble del número máximo de PDU en tránsito, como en el ARQ de repetición selectiva.
+- **Control de flujo:**  Limita la cantidad o tasa de datos que un emisor puede enviar para evitar la saturación del receptor. El método más simple es parada y espera, donde cada PDU debe ser confirmada antes de enviar la siguiente. Métodos más avanzados, como la ventana deslizante de HDLC, permiten enviar múltiples PDU sin esperar confirmación inmediata. Este control debe aplicarse en distintos niveles, desde la red hasta la aplicación, para evitar sobrecargas en memoria o almacenamiento.
+- **Control de errores:** Previene pérdidas y daños en los datos mediante detección y retransmisión. El emisor agrega un código de detección a la PDU, que el receptor verifica al recibirla. Si hay errores, la PDU se descarta y, si no llega un acuse de recibo, se retransmite. Algunos protocolos incluyen corrección de errores para solucionar fallos sin retransmisión. Este control debe aplicarse en varias capas, desde la red hasta el transporte, para garantizar la integridad de los datos en todo el proceso de comunicación.
+- **Direccionamiento:** Para garantizar una comunicación eficiente y organizada en redes de datos, definiendolo: 
+    - Nivel de direccionamiento: Determina en qué capa del modelo de comunicaciones se asigna una dirección. En la capa de red, cada sistema final o intermedio recibe una dirección única (IP en TCP/IP o NSAP en OSI) utilizada para encaminar datos. En niveles superiores, cada aplicación o usuario se identifica con un puerto (TCP/IP) o SAP (OSI).
+    - Alcance del direccionamiento: Se refiere a la aplicabilidad de una dirección. Las direcciones globales son únicas y permiten la comunicación entre cualquier sistema en la red. A nivel de red, las direcciones locales (como MAC en redes IEEE 802) identifican dispositivos dentro de una red específica.
+    - Identificadores de conexión: En conexiones orientadas, se usan identificadores temporales en lugar de direcciones globales para reducir la sobrecarga y optimizar el encaminamiento y multiplexación. Ejemplo: en retransmisión de tramas, se usa el DLCI para identificar una conexión.
+    - Modo de direccionamiento: Puede ser unidifusión (unicast) para un solo destinatario, difusión (broadcast) para todos en un dominio o multidifusión (multicast) para un subconjunto de destinatarios.
+- **Multiplexación:** Permite gestionar múltiples conexiones en un solo sistema o red. Puede realizarse de distintas maneras:
+    - Multiplexación en un solo sistema: Varias conexiones pueden compartir una interfaz física, como en la retransmisión de tramas o en conexiones TCP, diferenciadas por números de puerto.
+    - Multiplexación entre niveles: Se pueden asignar conexiones de un nivel a otro de dos formas:
+        - Multiplexación ascendente (hacia dentro): Múltiples conexiones de un nivel superior comparten una única conexión en un nivel inferior para optimizar recursos.
+        - Multiplexación descendente (división): Una conexión de nivel superior se distribuye en varias conexiones inferiores para mejorar fiabilidad, rendimiento o eficiencia.
+- **Servicios de transmisión:** Los protocolos pueden ofrecer servicios adicionales para optimizar la comunicación entre entidades,estos dependen del sistema de transmisión y las entidades de niveles inferiores que los soportan. Entre los más comunes están:
+    - Prioridad: Permite que ciertos mensajes urgentes, como solicitudes de terminación de conexión, tengan menor retardo. Puede asignarse por tipo de mensaje o conexión.
+    - Calidad de servicio (QoS): Garantiza un rendimiento mínimo o limita el retardo máximo para ciertos tipos de datos.
+    - Seguridad: Restringe el acceso y protege la información transmitida.
+--- 
+### 1.2) Principio de la interconexión entre redes.
 
-### Principio de la interconexión entre redes.
+---
+### 1.3) Interconexión entre redes sin conexión.
 
-### Interconexión entre redes sin conexión.
+---
+### 1.4) El protocolo internet (IPv4).
 
-### El protocolo internet (IPv4).
+---
+### 1.5) IPv6.
 
-### IPv6.
-
-
+---
 ## 2. Diagrama de red en el software Cisco Packet Tracer.
 En este trabajo se ha realizó la construcción del diagrama de red propuesto utilizando el software de simulación Cisco Packet Tracer. Este software permite diseñar, configurar y probar redes de computadoras en un entorno virtual antes de implementarlas físicamente.
 El diseño de la red incluye un router que actúa como intermediario entre los dispositivos, un switch que permite la conexión y comunicación entre múltiples dispositivos finales y tres hosts (h1, h2 y h3) que representan computadoras conectadas a la red.
