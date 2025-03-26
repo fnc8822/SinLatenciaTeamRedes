@@ -59,10 +59,6 @@ Para la implementación y análisis, se utilizarán herramientas como **GNS3**, 
 ---
 ## Desarrollo
 
-<<<<<<< HEAD
-## 1. Marco teórico resumido
-### Funciones basicas de los protocolos.
-=======
 ## 1. Marco Teórico - PARTE V - Protocolos de interconexión.
 ### 1.1) Funciones básicas de los protocolos
 Es posible agrupar las funciones de los protocolos dentro de las siguientes categorias:
@@ -101,39 +97,50 @@ Es posible agrupar las funciones de los protocolos dentro de las siguientes cate
     - Seguridad: Restringe el acceso y protege la información transmitida.
 --- 
 ### 1.2) Principio de la interconexión entre redes.
->>>>>>> b9f2fb6b2112d41e876ce431502bddd523f95d45
+La interconexión entre redes permite la comunicación entre sistemas de distintas tecnologías, arquitecturas y protocolos. Se basa en los siguientes principios fundamentales:
 
-<<<<<<< HEAD
-    
-### Principio de la interconexión entre redes.
-=======
+- **Arquitectura en capas:** Separa las funciones de comunicación en niveles con interfaces bien definidas, como el **modelo OSI** o **TCP/IP**.
+- **Independencia de la red física:** Permite conectar diferentes tipos de redes, como Ethernet, Wi-Fi y fibra óptica.
+- **Encapsulación y desencapsulación:** Cada capa agrega o elimina información de control a medida que los datos viajan entre el emisor y el receptor.
+- **Encaminamiento dinámico:** Utiliza protocolos como **RIP, OSPF y BGP** para determinar las mejores rutas en redes interconectadas.
+- **Transparencia de comunicación:** Los usuarios finales no necesitan conocer detalles de la red subyacente.
+
 ---
 ### 1.3) Interconexión entre redes sin conexión.
->>>>>>> b9f2fb6b2112d41e876ce431502bddd523f95d45
+En las redes sin conexión, los paquetes se transmiten de manera independiente sin establecer un canal de comunicación previo. Características principales:
 
-<<<<<<< HEAD
-### Interconexión entre redes sin conexión.
+- **Encaminamiento independiente:** Cada paquete puede tomar una ruta distinta hasta el destino.
+- **No se garantiza el orden de entrega:** Los paquetes pueden llegar desordenados y con posibles pérdidas.
+- **Reducción de sobrecarga:** Al no requerir establecimiento ni mantenimiento de conexión, la eficiencia mejora en ciertas aplicaciones.
 
-### El protocolo Internet (IPv4).
-
-### IPv6.
-
----
-=======
 ---
 ### 1.4) El protocolo internet (IPv4).
+IPv4 es la versión más utilizada del Protocolo de Internet, con direcciones de **32 bits** y formato **decimal separado por puntos**. Características:
+
+- **Encabezado de 20 bytes**, con campos como **dirección origen, destino, TTL, checksum**.
+- **Fragmentación y reensamblado:** Adaptación a distintos MTU.
+- **Protocolos complementarios:** ICMP para control de errores, ARP para resolución de direcciones.
+- **Limitaciones:** Número finito de direcciones, agotamiento de IP, seguridad limitada.
 
 ---
 ### 1.5) IPv6.
+IPv6 fue diseñado para solucionar las limitaciones de IPv4. Características principales:
 
+- **Direcciones de 128 bits**, expresadas en notación hexadecimal.
+- **Espacio de direcciones enorme**, con 2¹²⁸ combinaciones posibles.
+- **Autoconfiguración:** Permite asignación de direcciones sin DHCP.
+- **Encabezado simplificado:** Reduce la carga de procesamiento en routers.
+- **Seguridad integrada:** IPSec es obligatorio en IPv6.
+- **Multidifusión y anycast:** Métodos avanzados de direccionamiento.
+- **Compatibilidad con IPv4:** Técnicas como **túneles y NAT64** facilitan la transición.
 ---
->>>>>>> b9f2fb6b2112d41e876ce431502bddd523f95d45
 ## 2. Diagrama de red en el software Cisco Packet Tracer.
 En este trabajo se ha realizó la construcción del diagrama de red propuesto utilizando el software de simulación Cisco Packet Tracer. Este software permite diseñar, configurar y probar redes de computadoras en un entorno virtual antes de implementarlas físicamente.
 El diseño de la red incluye un router que actúa como intermediario entre los dispositivos, un switch que permite la conexión y comunicación entre múltiples dispositivos finales y tres hosts (h1, h2 y h3) que representan computadoras conectadas a la red.
 
 <p align="center">
     <img src="./imagenes/03_diagrama_de_red.png" alt="ISI" width="600"/>
+    <p align="center">Figura 3: Diagrama en Cisco Packet Tracer.</p>
 </p>
 
 Se configuró un router Cisco con direcciones IPv4 e IPv6, habilitando el enrutamiento entre subredes. Se asignaron IP a las interfaces GigabitEthernet0/0 y 0/1, conectando h1, h2 y h3. Se activó el enrutamiento IPv6 con ipv6 unicast-routing y se habilitaron las interfaces con no shutdown. Luego, se guardó la configuración en NVRAM (copy running-config startup-config). Finalmente, se verificó la asignación de direcciones con show ipv6 interface brief. Esto permitió la comunicación entre los hosts en IPv4 e IPv6.
@@ -216,15 +223,22 @@ Para evaluar la conectividad entre todos los hosts, se envió tres paquetes ICMP
 
 <p align="center">
     <img src="./imagenes/04_h1_IPv4.png" alt="ISI" width="600"/>
+    <p align="center">Figura 4: Pings IPv4 desde h1.</p>
 </p>
 <p align="center">
     <img src="./imagenes/05_h2_IPv4.png" alt="ISI" width="600"/>
+    <p align="center">Figura 5: Pings IPv4 desde h2.</p>
+
 </p>
 <p align="center">
     <img src="./imagenes/06_h3_IPv4.png" alt="ISI" width="600"/>
+    <p align="center">Figura 6: Pings IPv4 desde h3.</p>
+
 </p>
 <p align="center">
     <img src="./imagenes/07_router_IPv4.png" alt="ISI" width="600"/>
+    <p align="center">Figura 7: Ping IPv4 desde R1.</p>
+
 </p>
 
 ## 5. Evaluación de conectividad entre todos los host para IPv6.
@@ -232,41 +246,52 @@ Para comprobar la conectividad entre todos los hosts, se enviaron tres paquetes 
 
 <p align="center">
     <img src="./imagenes/08_h1_IPv6.png" alt="ISI" width="600"/>
+    <p align="center">Figura 8: Pings IPv6 desde h1.</p>
 </p>
 <p align="center">
     <img src="./imagenes/09_h2_IPv6.png" alt="ISI" width="600"/>
+    <p align="center">Figura 9: Pings IPv6 desde h2.</p>
 </p>
 <p align="center">
     <img src="./imagenes/10_h3_IPv6.png" alt="ISI" width="600"/>
+    <p align="center">Figura 10: Pings IPv6 desde h3.</p>
 </p>
 <p align="center">
     <img src="./imagenes/11_router_IPv6.png" alt="ISI" width="600"/>
+    <p align="center">Figura 11: Pings IPv6 desde R1.</p>
 </p>
 
 ## 6.  Análisis de Comunicaciones en la Red
- a) Comunicaciones ARP observadas
+  - a) Comunicaciones ARP observadas
+
 Durante la comunicación ICMP, se observan mensajes ARP (Address Resolution Protocol) que son cruciales para la resolución de direcciones IP a direcciones MAC. Este proceso ocurre cuando un dispositivo necesita conocer la dirección MAC de otro dispositivo dentro de la misma red local.
 Por ejemplo, cuando PC0 quiere enviar un mensaje a PC1 (que tiene la IP 192.168.2.10), primero envía un ARP Request preguntando "¿Quién tiene 192.168.2.10?". PC1, al recibir este ARP Request, responde con su dirección MAC a través de un ARP Reply. Este mecanismo es fundamental para que los dispositivos se comuniquen dentro de una red.
 
- b) Direcciones IP en los datagramas
+ - b) Direcciones IP en los datagramas
+
 En los paquetes ICMP (como los generados por los comandos de ping), podemos observar las direcciones IP de origen y destino. En este caso específico, cuando PC0 realiza un ping a PC1, se verá un paquete ICMP donde la dirección de origen es la de PC0 (192.168.1.10) y la dirección de destino es la de PC1 (192.168.2.10). Las direcciones IP son esenciales para la correcta entrega del paquete a través de diferentes redes.
 
- c) Determinación de la comunicación entre hosts por parte del enrutador
+ - c) Determinación de la comunicación entre hosts por parte del enrutador
+
 El enrutador juega un papel crucial en la comunicación entre redes distintas. Para determinar cómo se debe enviar un paquete de un host a otro, el enrutador consulta su tabla de enrutamiento. En este caso, PC0 y PC1 están en redes diferentes (192.168.1.x y 192.168.2.x), por lo que el enrutador debe tomar decisiones basadas en la dirección IP de destino. El enrutador sabe que debe reenviar el tráfico de PC0 hacia la red de PC1, ya que la IP de destino (192.168.2.10) pertenece a la red 192.168.2.x.
 
- d) Función del switch y por qué no tiene direcciones IP
+ - d) Función del switch y por qué no tiene direcciones IP
+
 El switch es un dispositivo que opera en la capa 2 del modelo OSI, es decir, en la capa de enlace de datos. Su principal función es conectar dispositivos dentro de la misma red local (LAN) y reenviar tramas de datos entre ellos. No necesita direcciones IP porque no está involucrado en la toma de decisiones sobre el enrutamiento de paquetes entre diferentes redes. El switch utiliza las direcciones MAC de los dispositivos para determinar cómo reenviar las tramas de manera eficiente dentro de la misma red.
 
- e, f, g) Contenido de las tablas ARP en cada equipo
+-  e, f, g) Contenido de las tablas ARP en cada equipo
+
 Las tablas ARP son esenciales para la comunicación dentro de una red local, ya que permiten mapear direcciones IP a direcciones MAC. Al analizar las tablas ARP en los dispositivos, podemos ver qué direcciones MAC conocen los diferentes equipos y cómo estas están asociadas con direcciones IP específicas.
 PC0 solo conoce la dirección MAC de su gateway (el router en la dirección 192.168.1.11), ya que no ha tenido necesidad de comunicarse directamente con otros dispositivos en la red.
 PC1, por otro lado, conoce tanto la dirección MAC de PC2 (192.168.2.11) como la del router (192.168.2.12), dado que ambas son necesarias para su funcionamiento dentro de la red.
 PC2 solo tiene registrada la dirección MAC de PC1 (192.168.2.10) porque se ha comunicado directamente con él, pero aún no ha enviado tráfico hacia fuera de su red, por lo que no tiene la MAC del router registrada.
 
- h) Direcciones de broadcast en IPv4
+-  h) Direcciones de broadcast en IPv4
+
 Las direcciones de broadcast en IPv4 son direcciones especiales utilizadas para enviar mensajes a todos los dispositivos dentro de una red local. Por ejemplo, la dirección 192.168.1.255 es una dirección de broadcast en la red 192.168.1.0/24. Esto permite que los paquetes se distribuyan a todos los dispositivos dentro de esa red, lo cual es útil para servicios como ARP y DHCP.
 
- i) Direcciones multicast en IPv4
+-  i) Direcciones multicast en IPv4
+
 Las direcciones multicast en IPv4 se utilizan para enviar tráfico a un grupo de dispositivos en lugar de a un único dispositivo. Estas direcciones pertenecen al rango 224.0.0.0 a 239.255.255.255. Un ejemplo común de una dirección multicast es 224.0.0.1, que se usa para enviar tráfico a todos los hosts en la red local.
 
 El análisis del tráfico ICMP y las tablas ARP nos muestra cómo los dispositivos dentro de una red se comunican y cómo los mecanismos de ARP y enrutamiento facilitan esta comunicación. Las direcciones IP y MAC, junto con los conceptos de broadcast y multicast, son esenciales para el funcionamiento eficiente de la red.
@@ -280,13 +305,13 @@ Los tipos de mensajes NDP observados son:
 <p align="center">
     <img src="./imagenes/NDPh1.png" alt="ISI" width="600"/>
 </p>
-<p align="center">Figura x: Datagrama NDP en h1.</p>
+<p align="center">Figura 12: Datagrama NDP en h1.</p>
 <br>
 <br>
 <p align="center">
     <img src="./imagenes/NDPh3.png" alt="ISI" width="600"/>
 </p>
-<p align="center">Figura x: Datagrama NDP en h3.</p>
+<p align="center">Figura 13: Datagrama NDP en h3.</p>
 <br>
 En IPv6 el protocolo NDP (Neighbor Discovery Protocol) reemplaza al ARP usado en IPv4. NDP utiliza mensajes ICMPv6 para descubrir nodos en la red, resolver direcciones de enlace y realizar el resto de sus funciones.
 
@@ -305,6 +330,8 @@ Las direcciones unique-local son análogas a las direcciones privadas en IPv4. D
 - Direcciones Globales:
 Las direcciones globales son ruteables a nivel mundial y permiten la comunicación a través de Internet. Generalmente se asignan con el prefijo 2000::/3 y son asignadas por proveedores de servicios de Internet. Estas direcciones facilitan la identificación única de dispositivos en cualquier parte del mundo.
 
+<div align="center">
+
 | Característica   | Link-Local | Unique-Local | Global |
 | --------- | ---------- | ---------- | ---------- |
 | **Prefijo** | fe80::/10 | fc00::/7 | 2000::/3 |
@@ -312,28 +339,9 @@ Las direcciones globales son ruteables a nivel mundial y permiten la comunicaci�
 | **Configuración**| Automática (SLAAC) | Manual o automática | Asignada por ISP o administrativamente |
 | **Uso** | Comunicación en el mismo segmento | Redes internas, comunicación privada | Comunicación global, acceso a Internet  |
 
+</div>
 
 --- 
-
-### Nivel de título 3
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, mauris sit amet aliquet vestibulum, enim ante consectetur enim, vel sollicitudin odio risus vel libero. Integer eget ipsum sed eros luctus laoreet vel vel leo. Fusce ut dapibus nisl. Aliquam erat volutpat. Donec in elit non justo convallis vestibulum.
-
-| Ejemplo | Tabla |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
-
-```
-// Más código
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "age": 25
-}
-```
-
----
 
 ## Resultados
 

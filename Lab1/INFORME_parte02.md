@@ -82,11 +82,13 @@
 ### Procedimiento
 - a. Conectar una PC al puerto de consola del switch Cisco a 9600 baudios utilizando PUTTY.
   - Conectar el puerto de consola a una conversor a interfaz serial.
-<p align="center">
-    <img src="./capturas/Puerto.png" alt="ISI" width="600"/>
-</p>
-<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
-<br>
+
+  <p align="center">
+      <img src="./capturas/Puerto.png" alt="ISI" width="600"/>
+  </p>
+  <p align="center">Figura 1: Puerto del conversor USB-RS232.</p>
+  <br>  
+
   - (Opcional) En caso de no tener interfaz serial, utilizar un conversor a USB. 
   - Conectar a la computadora para la conexion.
   - Utilizar administrador de dispositivos (Windows) o setserial (Linux) para determinar el puerto
@@ -103,13 +105,13 @@
 <p align="center">
     <img src="./capturas/Passwords.png" alt="ISI" width="600"/>
 </p>
-<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
+<p align="center">Figura 2: User Access Verification en PuTTY.</p>
 <br>
 
 <p align="center">
     <img src="./capturas/Passwords2.png" alt="ISI" width="600"/>
 </p>
-<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
+<p align="center">Figura 3: Enable Secret en PuTTY.</p>
 <br>
 
 - c.Conectar dos computadoras al switch, configurar una red y testear conectividad.
@@ -117,7 +119,7 @@
 <p align="center">
     <img src="./capturas/Ping.png" alt="ISI" width="600"/>
 </p>
-<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
+<p align="center">Figura 4: Ping entre dos computadoras conectadas al switch.</p>
 <br>
 
 ### Actividades de parte 1
@@ -127,5 +129,5 @@
 <p align="center">
     <img src="./capturas/arp.png" alt="ISI" width="600"/>
 </p>
-<p align="center">Figura 2: Tabla de asignaciones de direcciones.</p>
+<p align="center">Figura 5: Tabla de ARP.</p>
 <br>
