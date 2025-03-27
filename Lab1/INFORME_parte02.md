@@ -23,8 +23,8 @@
 - nicoluduena@mi.unc.edu.ar
 - juan.sassi@mi.unc.edu.ar
 - francocirrincione@mi.unc.edu.ar
----
 
+---
 
 ### Switch WS-C2950
 - Modelos y Puertos
@@ -100,6 +100,7 @@
   - Open
 
 - b. Acceder a las opciones de administración del switch y modificar claves de acceso.
+Se accedió a las opciones de administración y se modificaron las claves de acceso. Luego se ingresó al modo privilegiado. Se accedió al modo de configuración global. Se configuró la clave para el modo privilegiado. Finalmente se estableció una clave de acceso por consola:
   - 
 <br>
 <p align="center">
@@ -115,6 +116,7 @@
 <br>
 
 - c.Conectar dos computadoras al switch, configurar una red y testear conectividad.
+Se asignaron direcciones IP manualmente en cada computadora y se realizó una prueba de conectividad con ping
 
 <p align="center">
     <img src="./capturas/Ping.png" alt="ISI" width="600"/>
@@ -122,7 +124,11 @@
 <p align="center">Figura 4: Ping entre dos computadoras conectadas al switch.</p>
 <br>
 
-### Actividades de parte 1
+### Actividades de parte 1 - Análisis de tráfico de la red
+
+- Ejecutando arp -n en Cliente 1 (Miembro del equipo), se verá la dirección IP y la dirección MAC de los dispositivos con los que se ha comunicado.
+- En Cliente 2 (Miembro de otro equipo), al ejecutar arp -n, se listarán las direcciones IP y MAC aprendidas.
+- En el router, arp -n mostrará las direcciones IP y MAC de los hosts conectados a sus interfaces activas.
 
 - Tablas arp:
 <br>
