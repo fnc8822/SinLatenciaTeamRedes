@@ -184,6 +184,8 @@ Usar el cable de consola (RJ-45) y conectar el switch a una computadora con PuTT
 <p align="center">Figura 5: Tabla de ARP.</p>
 <br>
 
+---
+
 ## Resultados
 Durante el proceso de configuración y prueba de conectividad del switch WS-C2950, se lograron obtener los siguientes resultados:
 
@@ -206,6 +208,8 @@ Se configuró correctamente el puerto de mirroring (SPAN) para capturar el tráf
 ### - Análisis de tráfico de red con ARP:
 
 Se ejecutó con éxito el comando arp -n en diferentes dispositivos (Cliente 1, Cliente 2 y el router), obteniendo las direcciones IP y MAC de los dispositivos conectados, lo cual proporcionó información valiosa sobre las relaciones de conectividad en la red.
+
+---
 
 ## Conclusión
 Este ejercicio proporcionó una comprensión práctica y detallada del funcionamiento y la configuración de un switch Cisco WS-C2950, así como de sus capacidades de administración, seguridad y monitoreo de tráfico. Los siguientes puntos destacan las conclusiones clave:
