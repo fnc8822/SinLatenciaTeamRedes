@@ -164,6 +164,7 @@ Usar el cable de consola (RJ-45) y conectar el switch a una computadora con PuTT
 5. Finalizar la sesión de monitoreo
    
     no monitor session 1
+   
     write memory
    
    De esta forma configuramos correctamente el mirroring del tráfico y pudimos analizar la comunicación entre las computadoras en tiempo real.
