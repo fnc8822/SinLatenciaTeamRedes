@@ -264,11 +264,11 @@ Para comprobar la conectividad entre todos los hosts, se enviaron tres paquetes 
 ## 6.  Análisis de Comunicaciones en la Red
 
 <p align="center">
-    <img src="./imagenes/respuesta_6_1.png" alt="ISI" width="600"/>
+    <img src="./imagenes/respuesta_6_1.jpeg" alt="ISI" width="600"/>
 </p>
 
 <p align="center">
-    <img src="./imagenes/respuesta_6_2.png" alt="ISI" width="600"/>
+    <img src="./imagenes/respuesta_6_2.jpeg" alt="ISI" width="600"/>
 </p>
 
   - a) Comunicaciones ARP observadas
