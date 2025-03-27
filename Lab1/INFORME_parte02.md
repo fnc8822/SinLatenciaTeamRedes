@@ -161,11 +161,12 @@ Seleccionar la interfaz de red conectada al switch.
 
 Iniciar la captura de paquetes y observar el tráfico entre PC1 y PC2.
 
-De esta forma configuramos correctamente el mirroring del tráfico y pudimos analizar la comunicación entre las computadoras en tiempo real.
-
 6. Finalizar la sesión de monitoreo
+7. 
     no monitor session 1
     write memory
+   
+   De esta forma configuramos correctamente el mirroring del tráfico y pudimos analizar la comunicación entre las computadoras en tiempo real.
 ---
 
 ### Actividades de parte 1 - Análisis de tráfico de la red
