@@ -155,14 +155,14 @@ Usar el cable de consola (RJ-45) y conectar el switch a una computadora con PuTT
     
 4. Capturar el tráfico con Wireshark.
    
-En la PC3, instalar y abrir el programa.
+    En la PC3, instalar y abrir el programa.
 
-Seleccionar la interfaz de red conectada al switch.
+    Seleccionar la interfaz de red conectada al switch.
 
-Iniciar la captura de paquetes y observar el tráfico entre PC1 y PC2.
+    Iniciar la captura de paquetes y observar el tráfico entre PC1 y PC2.
 
-6. Finalizar la sesión de monitoreo
-7. 
+5. Finalizar la sesión de monitoreo
+   
     no monitor session 1
     write memory
    
