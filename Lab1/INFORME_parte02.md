@@ -183,3 +183,36 @@ Usar el cable de consola (RJ-45) y conectar el switch a una computadora con PuTT
 </p>
 <p align="center">Figura 5: Tabla de ARP.</p>
 <br>
+
+## Resultados
+Durante el proceso de configuración y prueba de conectividad del switch WS-C2950, se lograron obtener los siguientes resultados:
+
+### - Acceso a la consola del switch:
+
+Utilizando el software PuTTY, se logró acceder a las opciones de administración del switch. La conexión fue establecida a través de un conversor USB-RS232, asegurando la correcta transmisión de datos a 9600 baudios.
+
+### - Modificación de claves de acceso:
+
+Se modificaron con éxito las claves de acceso para el modo privilegiado y el acceso por consola, lo cual asegura una mayor seguridad en el acceso al dispositivo.
+
+### - Prueba de conectividad entre dos computadoras:
+
+Tras asignar direcciones IP manualmente en las computadoras, se realizó una prueba de conectividad con el comando ping y se obtuvo una respuesta exitosa, confirmando que las máquinas podían comunicarse entre sí a través del switch.
+
+### - Monitoreo de tráfico mediante mirroring (SPAN):
+
+Se configuró correctamente el puerto de mirroring (SPAN) para capturar el tráfico entre las dos computadoras conectadas al switch y se utilizó Wireshark para analizar el tráfico en tiempo real. Esto permitió observar la transmisión de datos entre las computadoras.
+
+### - Análisis de tráfico de red con ARP:
+
+Se ejecutó con éxito el comando arp -n en diferentes dispositivos (Cliente 1, Cliente 2 y el router), obteniendo las direcciones IP y MAC de los dispositivos conectados, lo cual proporcionó información valiosa sobre las relaciones de conectividad en la red.
+
+## Conclusión
+Este ejercicio proporcionó una comprensión práctica y detallada del funcionamiento y la configuración de un switch Cisco WS-C2950, así como de sus capacidades de administración, seguridad y monitoreo de tráfico. Los siguientes puntos destacan las conclusiones clave:
+- Seguridad y administración: El proceso de modificación de contraseñas y configuración de acceso por consola es fundamental para asegurar la integridad del sistema de red. El uso de SSH y la integración con TACACS+ y RADIUS proporcionan un control robusto sobre el acceso al dispositivo.
+
+- Conectividad y rendimiento: El switch demostró un rendimiento adecuado en cuanto a conectividad, alcanzando una buena respuesta en las pruebas de ping y soportando adecuadamente las conexiones de múltiples dispositivos. La capacidad de manejar hasta 8000 direcciones MAC y las opciones de QoS ofrecieron una sólida infraestructura para redes de tamaño medio.
+
+- Monitoreo de tráfico: La configuración del puerto en modo mirroring (SPAN) permitió observar el tráfico de la red, lo que es esencial para análisis de seguridad y optimización de rendimiento. El uso de herramientas como Wireshark resultó muy efectivo para capturar y analizar el tráfico en tiempo real.
+
+- Confiabilidad y facilidad de uso: La configuración y administración del switch fueron relativamente sencillas gracias a las interfaces como Cisco Device Manager y la interfaz de línea de comandos (CLI), lo que facilita la gestión a administradores con diferentes niveles de experiencia.
