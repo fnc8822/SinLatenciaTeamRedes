@@ -100,8 +100,8 @@
   - Open
 
 - b. Acceder a las opciones de administración del switch y modificar claves de acceso.
-Se accedió a las opciones de administración y se modificaron las claves de acceso. Luego se ingresó al modo privilegiado. Se accedió al modo de configuración global. Se configuró la clave para el modo privilegiado. Finalmente se estableció una clave de acceso por consola:
-  - 
+  - Se accedió a las opciones de administración y se modificaron las claves de acceso. Luego se ingresó al modo privilegiado. Se accedió al modo de configuración global. Se configuró la clave para el modo privilegiado. Finalmente se estableció una clave de acceso por consola:
+  
 <br>
 <p align="center">
     <img src="./capturas/Passwords.png" alt="ISI" width="600"/>
@@ -123,6 +123,8 @@ Se asignaron direcciones IP manualmente en cada computadora y se realizó una pr
 </p>
 <p align="center">Figura 4: Ping entre dos computadoras conectadas al switch.</p>
 <br>
+
+---
 
 ### Actividades de parte 1 - Análisis de tráfico de la red
 
