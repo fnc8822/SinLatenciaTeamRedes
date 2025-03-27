@@ -123,7 +123,27 @@ Se asignaron direcciones IP manualmente en cada computadora y se realizó una pr
 </p>
 <p align="center">Figura 4: Ping entre dos computadoras conectadas al switch.</p>
 <br>
-
+- d. Configuración del puerto en modo mirroring y monitoreo del tráfico
+1. Conectar las computadoras y el switch
+En primer lugar debemos tener las dos computadoras (PC1 y PC2) conectadas al switch. Luego, conectar la tercera (PC3) al switch en el puerto que será utilizado como puerto espejo (mirroring).
+2. Acceder al switch mediante consola
+Usar el cable de consola (RJ-45) y conectar el switch a una computadora con PuTTY.
+3. Configurar el puerto en modo mirroring (SPAN - Switched Port Analyzer)
+ -Ingresar en modo de configuración global:
+    enable
+    configure terminal
+ -Configura el puerto de origen (los puertos donde están conectadas PC1 y PC2) para que sean monitoreados:
+    monitor session 1 source interface fastethernet 0/X - both
+    monitor session 1 source interface fastethernet 0/Y - both
+ -Configura el puerto de destino (donde está conectada PC3) para recibir el tráfico duplicado:
+    monitor session 1 destination interface fastethernet 0/Z
+ -Guardar la configuración:
+    write memory
+4. Capturar el tráfico con Wireshark
+En la PC3, instalar y abrir el programa.
+Seleccionar la interfaz de red conectada al switch.
+Iniciar la captura de paquetes y observar el tráfico entre PC1 y PC2.
+De esta forma configuramos correctamente el mirroring del tráfico y pudimos analizar la comunicación entre las computadoras en tiempo real.
 ---
 
 ### Actividades de parte 1 - Análisis de tráfico de la red
