@@ -354,18 +354,39 @@ Las direcciones globales son ruteables a nivel mundial y permiten la comunicaci�
 
 ## Resultados
 
-completar...
+Durante la configuración y análisis del tráfico en una red dual stack con soporte para IPv4 e IPv6, se lograron los siguientes resultados clave:
+
+### - Conectividad IPv4:
+Se verificó la conectividad entre los hosts (h1, h2 y h3) mediante el envío de paquetes ICMPv4 utilizando el comando ping. Todos los paquetes fueron correctamente recibidos, confirmando que la red IPv4 estaba operando de manera eficiente y sin interrupciones.
+
+### - Conectividad IPv6:
+
+Se comprobó la conectividad entre los hosts utilizando el comando ping6 para enviar paquetes ICMPv6. Al igual que en IPv4, todas las respuestas fueron satisfactorias, lo que indicó que la red IPv6 estaba configurada correctamente y que los hosts podían comunicarse sin problemas.
+
+### - Resolución de direcciones ARP y NDP:
+
+Durante las pruebas de conectividad, se observó el funcionamiento del ARP en IPv4 y del NDP (Neighbor Discovery Protocol) en IPv6. En IPv4, cuando un host necesitaba enviar un paquete a otro, se envió una solicitud ARP para obtener la dirección MAC correspondiente. En IPv6, el proceso de resolución de direcciones se realizó mediante mensajes NDP, lo que permitió la correcta identificación de los dispositivos en la red.
+
+### - Tablas de enrutamiento y ARP:
+
+Se verificaron las tablas de enrutamiento y las tablas ARP de los dispositivos en la red. Los hosts tenían correctamente registradas las direcciones IP y MAC de los dispositivos en la red, incluyendo el enrutador, lo que garantizó una correcta resolución de direcciones para la entrega de paquetes.
+
+### - Funcionamiento de la red y comunicación entre diferentes subredes:
+
+El enrutador permitió la correcta comunicación entre las diferentes subredes, utilizando las tablas de enrutamiento para reenviar los paquetes de un host a otro. Las direcciones de broadcast en IPv4 también fueron configuradas correctamente, permitiendo la transmisión de mensajes a todos los dispositivos dentro de una red local.
 
 ---
 
-## Discusión y conclusiones
+## Conclusion
 
-completar...
+Este trabajo práctico permitió comprender de manera detallada el funcionamiento de los protocolos IPv4 e IPv6 en una red de comunicación. A través de la configuración de un entorno de red dual stack, se observó cómo ambos protocolos coexisten y gestionan el tráfico de manera eficiente, utilizando herramientas como ARP, NDP y ICMP.
+
+Los resultados confirmaron que la configuración de la red en Cisco Packet Tracer fue exitosa, permitiendo la conectividad entre los diferentes hosts en ambas versiones de IP. Además, se demostró la importancia de los protocolos de resolución de direcciones (ARP en IPv4 y NDP en IPv6) para garantizar la correcta comunicación entre los dispositivos en la red.
+
+Por último, el análisis de la conectividad y la correcta asignación de direcciones IP permitió verificar que tanto el enrutamiento de IPv4 como de IPv6 se implementó adecuadamente. Esto confirma que los protocolos de enrutamiento y las herramientas de asignación dinámica de direcciones, como DHCPv4 y DHCPv6, funcionan eficazmente en redes modernas, contribuyendo a una gestión eficiente de direcciones IP en entornos dual stack.
+
+---
 
 ## Referencias
 
 [1] Consultar [Normas APA](https://normas-apa.org/referencias/)
-
-[2] 
-
-[3] 
