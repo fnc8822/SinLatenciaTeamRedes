@@ -212,7 +212,9 @@ Se ejecutó con éxito el comando arp -n en diferentes dispositivos (Cliente 1, 
 ---
 
 ## Conclusión
-Este ejercicio proporcionó una comprensión práctica y detallada del funcionamiento y la configuración de un switch Cisco WS-C2950, así como de sus capacidades de administración, seguridad y monitoreo de tráfico. Los siguientes puntos destacan las conclusiones clave:
+Este ejercicio proporcionó una comprensión práctica y detallada del funcionamiento y la configuración de un switch Cisco WS-C2950, así como de sus capacidades de administración, seguridad y monitoreo de tráfico. 
+Se encontraron trabas a la hora de generar comunicaciones entre computadoras que usaban el sistema operativo Windows, ya sea utilizando el switch como tambien conectandolas de forma directa. Estas dificultades fueron superadas al utilizar otras con distintas distribuciones de GNU/Linux.
+Los siguientes puntos destacan las conclusiones clave:
 - Seguridad y administración: El proceso de modificación de contraseñas y configuración de acceso por consola es fundamental para asegurar la integridad del sistema de red. El uso de SSH y la integración con TACACS+ y RADIUS proporcionan un control robusto sobre el acceso al dispositivo.
 
 - Conectividad y rendimiento: El switch demostró un rendimiento adecuado en cuanto a conectividad, alcanzando una buena respuesta en las pruebas de ping y soportando adecuadamente las conexiones de múltiples dispositivos. La capacidad de manejar hasta 8000 direcciones MAC y las opciones de QoS ofrecieron una sólida infraestructura para redes de tamaño medio.
