@@ -109,7 +109,7 @@ UDP: ./iperf3.exe -u -c iperf.he.net -p 5201
 En esta prueba UDP se solicitó un ancho de banda de 100 Mbits/sec. El resultado muestra una tasa efectiva de 98.7 Mbits/sec con una pérdida muy baja de paquetes (0.1%):
 
   <p align="center">
-      <img src="./Capturas/Iperf 2.png" alt="ISI" width="600"/>
+      <img src="./Capturas/Iperf udp.png" alt="ISI" width="600"/>
   </p>
   <p align="center">texto??.</p>
   <br> 
