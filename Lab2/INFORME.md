@@ -35,31 +35,39 @@ El presente informe se centra en el estudio e implementación de topologías de 
 ---
 ## Marco teorico
 
-###  Topologías Multi-path
+**Topologías Multi-path**
+
 Las topologías multi-path se basan en la existencia de múltiples caminos físicos o lógicos entre un origen y un destino en una red. Esto permite balancear la carga de tráfico, mejorar la tolerancia a fallos y aumentar la disponibilidad, ya que si una ruta falla, otras pueden seguir operando. Se utilizan comúnmente en redes complejas como centros de datos o infraestructuras críticas.
 
-* Enrutamiento Estático
+**Enrutamiento Estático**
+
 El enrutamiento estático implica configurar manualmente las rutas en cada dispositivo de red. Ofrece simplicidad y control total sobre el tráfico, pero carece de adaptabilidad ante cambios o fallos en la red. Es útil en redes pequeñas o para propósitos educativos, donde se desea controlar de forma explícita el comportamiento del tráfico.
 
-3. Enrutamiento Dinámico
+**Enrutamiento Dinámico**
+
 Este tipo de enrutamiento utiliza protocolos que descubren rutas automáticamente y se adaptan a cambios en la red. Protocolos como OSPF, RIP o BGP calculan la mejor ruta basada en métricas como costo, latencia o número de saltos. Aumenta la escalabilidad y la resiliencia, pero añade complejidad y puede generar tráfico adicional.
 
-4. iperf3
+**iperf3**
+
 iperf3 es una herramienta de código abierto para medir el rendimiento de la red entre dos hosts. Permite probar con TCP y UDP, definir el ancho de banda, duración de la prueba, tamaño y número de paquetes, entre otros parámetros. Es esencial para medir el throughput, jitter y pérdidas, y comparar el rendimiento entre configuraciones distintas.
 
-5. Protocolo TCP
+**Protocolo TCP**
+
 TCP (Transmission Control Protocol) es un protocolo orientado a la conexión que garantiza la entrega ordenada y completa de los datos. Implementa mecanismos de control de congestión y confirmación de paquetes, lo que lo hace confiable pero menos eficiente en situaciones donde la velocidad es prioritaria.
 
-6. Protocolo UDP
+**Protocolo UDP**
+
 UDP (User Datagram Protocol) es un protocolo no orientado a la conexión que envía paquetes sin verificar su llegada. Es útil para aplicaciones en tiempo real (como video o juegos), pero puede experimentar pérdida de datos si la red está sobrecargada, ya que no implementa retransmisión ni control de congestión.
 
-7. Wireshark
+**Wireshark**
+
 Wireshark es un analizador de protocolos de red que permite capturar y visualizar el tráfico en tiempo real. Permite aplicar filtros por IP, protocolo, puerto, etc., lo que facilita el análisis detallado de las pruebas realizadas. Es útil para comprobar el funcionamiento de la red y diagnosticar problemas.
 
-8. ICMP y pruebas de conectividad
+**ICMP y pruebas de conectividad**
+
 El protocolo ICMP (Internet Control Message Protocol) se utiliza para diagnosticar problemas de red, siendo el más conocido el comando ping, que comprueba la conectividad entre dos nodos. Es útil para verificar si las rutas están bien configuradas y si los dispositivos responden correctamente.
 
-9. Balanceo de carga y redundancia
+**Balanceo de carga y redundancia**
 En una topología multi-path, el tráfico puede ser distribuido entre múltiples rutas, lo que ayuda a balancear la carga de red y evita cuellos de botella. Además, en caso de fallo de una ruta, otras pueden asumir el tráfico, aumentando la disponibilidad del sistema.
 
 ---
