@@ -73,8 +73,7 @@ En una topología multi-path, el tráfico puede ser distribuido entre múltiples
 ---
 ## Desarrollo
 
-1) Configurar los dispositivos/PCs con IPs fijas y comprobar conexión con paquetes ICMP entre hosts bajo el mismo switch, y entre distintos grupos.
-
+(1)
 Como primer paso en el desarrollo del laboratorio, se procedió a la configuración manual de direcciones IP estáticas en las notebooks del grupo. Las IPs fueron asignadas respetando el rango de red definido para cada grupo, asegurando que no existieran conflictos de direcciones duplicadas:
 
   <p align="center">
@@ -85,23 +84,39 @@ Como primer paso en el desarrollo del laboratorio, se procedió a la configuraci
 
 Una vez configuradas las IPs en cada notebook, se realizaron pruebas de conectividad mediante el protocolo ICMP, utilizando el comando ping. Inicialmente, se comprobó la conexión entre hosts pertenecientes al mismo grupo y conectados al mismo switch. Esta prueba permitió verificar la correcta configuración de la interfaz de red, el estado operativo del cableado y la funcionalidad básica del switch. Posteriormente, se amplió la prueba a la comunicación entre hosts de distintos grupos, conectados a través de switches y routers intermedios. Esto permitió validar la interoperabilidad entre subredes y comprobar que las rutas necesarias estaban correctamente definidas o disponibles para el paso de paquetes entre diferentes segmentos de la red. 
 
+(2)
+Para llevar a cabo las pruebas de rendimiento de red, se utilizó la herramienta iperf3, descargada desde https://iperf.fr. Esta herramienta permite medir parámetros clave como el ancho de banda, la latencia y la estabilidad de la conexión, mediante una arquitectura cliente-servidor. En nuestro caso, se ejecutó sobre sistemas Windows, desde la línea de comandos, usando la versión iperf3.exe.
 
-2) Descargar iperf3: https://iperf.fr y resumir los principales comandos para realizar pruebas con
-gurando:
+Durante el trabajo, se utilizaron varios servidores públicos disponibles en Internet para realizar pruebas reales desde los equipos del laboratorio. En todos los casos, se configuró iperf3 como cliente, con distintos parámetros de configuración. A continuación se describen los principales aspectos explorados:
 
-a) Protocolos TCP y UDP
-b) Número y tamaño de paquetes
-c) Frecuencia/tiempo
-d) Ancho de banda
-3) Configurar Wireshark (o algún software de sniffing similar) para
-ltrar tráfico basándose en las IPs de partida/destino. Capturar tráfi co y ejecutar pruebas con un host (pc) como servidor y otro como cliente, con distintas configuraciones de protocolos y configuraciones entre:
+a) Protocolos TCP y UDP: Por defecto, iperf3 utiliza el protocolo TCP. Para realizar pruebas con UDP, se empleó el parámetro -u.
+TCP: ./iperf3.exe -c iperf.he.net -p 5201
+UDP: ./iperf3.exe -u -c iperf.he.net -p 5201
+
+b) Número y tamaño de paquetes: Aunque en las pruebas realizadas no se modificó explícitamente el tamaño de los paquetes, iperf3 permite configurar el tamaño del buffer (y por ende el tamaño de los paquetes) con el parámetro -l. Este aspecto podría explorarse más a fondo en pruebas futuras.
+
+c) Frecuencia/tiempo: Las pruebas por defecto duran 10 segundos, pero pueden ajustarse con el parámetro -t. En este caso, se mantuvo la duración por defecto. Este valor determina la cantidad total de datos transmitidos durante la prueba.
+
+d) Ancho de banda: En las pruebas con protocolo UDP, se especificó el ancho de banda deseado utilizando el parámetro -b. Por ejemplo, -b 0 solicita el mayor ancho de banda posible dentro de los límites de la red.
+./iperf3.exe -b 0 -u -c iperf.he.net -p 5201 → prueba UDP con ancho de banda ilimitado.
+./iperf3.exe -b 0 -c iperf.he.net -p 5201 → prueba TCP (el -b se ignora en este caso, ya que TCP ajusta automáticamente la tasa de envío).
+
+Puerto personalizado (-p): Se realizaron pruebas contra distintos servidores escuchando en puertos específicos, utilizando el parámetro -p. Esto permitió conectarse a servicios alternativos de iperf y evitar conflictos en el entorno.
+Ejemplos:
+./iperf3.exe -c ping.online.net -p 5201
+./iperf3.exe -c 34.176.225.102 -p 2222
+
+Estas pruebas permitieron observar diferencias claras entre los comportamientos de TCP y UDP, así como evaluar el desempeño de los enlaces bajo distintas configuraciones. Se obtuvieron resultados realistas al utilizar servidores externos, con los que se pudo medir el impacto de la latencia, la congestión y la variabilidad del tráfico en Internet.
+
+
+3) Configurar Wireshark (o algún software de sniffing similar) para filtrar tráfico basándose en las IPs de partida/destino. Capturar tráfi co y ejecutar pruebas con un host (pc) como servidor y otro como cliente, con distintas configuraciones de protocolos y configuraciones entre:
 a) Dos computadoras en un mismo grupo (no olvidar configurar el capturador en loopback)
 b) Una computadora de un grupo y computadoras de al menos otros 2 (dos) grupos
 Documentar capturas de wireshark y las consolas corriendo iperf.
-4) Elaborar conclusiones sobre los siguientes aspectos:
-¿Cuál es el ancho de banda promedio de la prueba? ¿Cuánto duró la prueba? ¿Cuál es el tamaño promedio de paquetes? ¿Observas alguna diferencia entre UDP y TCP? ¿Observamos relación entre alguno de los parámetros de la prueba y la pérdida de paquetes?
-5) Ejecutar una prueba como cliente desde una computadora del grupo hacia un servidor propuesto en clase.
-Documentar los resultados y elaborar conclusiones sobre los aspectos del punto 4, además de comparar con los resultados de las pruebas del punto 3)
+
+4) Elaborar conclusiones sobre los siguientes aspectos: ¿Cuál es el ancho de banda promedio de la prueba? ¿Cuánto duró la prueba? ¿Cuál es el tamaño promedio de paquetes? ¿Observas alguna diferencia entre UDP y TCP? ¿Observamos relación entre alguno de los parámetros de la prueba y la pérdida de paquetes?
+
+5) Ejecutar una prueba como cliente desde una computadora del grupo hacia un servidor propuesto en clase. Documentar los resultados y elaborar conclusiones sobre los aspectos del punto 4, además de comparar con los resultados de las pruebas del punto 3)
 
 ---
 ## Resultados
