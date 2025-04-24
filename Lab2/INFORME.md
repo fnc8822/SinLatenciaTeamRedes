@@ -76,7 +76,7 @@ En una topología multi-path, el tráfico puede ser distribuido entre múltiples
 Primero se configuraron las notebooks con IPs fijas, se comprobó conexión con paquetes ICMP entre host conectados al mismo switch y otros dispositivos de otros grupos:
 
   <p align="center">
-      <img src="./capturas/IP estatica.png" alt="ISI" width="600"/>
+      <img src="./Capturas/IP estatica.png" alt="ISI" width="600"/>
   </p>
   <p align="center">Figura 1: IP fija.</p>
   <br> 
