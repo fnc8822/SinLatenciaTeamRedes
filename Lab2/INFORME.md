@@ -158,11 +158,15 @@ Como el parámetro -b se ignora en TCP, el ancho de banda se mantiene constante,
 
 Puerto personalizado (-p): Se realizaron pruebas contra distintos servidores escuchando en puertos específicos, utilizando el parámetro -p. Esto permitió conectarse a servicios alternativos de iperf y evitar conflictos en el entorno.
 Ejemplos:
+
+```
 ./iperf3.exe -c ping.online.net -p 5201
 ./iperf3.exe -c 34.176.225.102 -p 2222
+```
 
 Estas pruebas permitieron observar diferencias claras entre los comportamientos de TCP y UDP, así como evaluar el desempeño de los enlaces bajo distintas configuraciones. Se obtuvieron resultados realistas al utilizar servidores externos, con los que se pudo medir el impacto de la latencia, la congestión y la variabilidad del tráfico en Internet.
 
+---
 
 3) Configurar Wireshark (o algún software de sniffing similar) para filtrar tráfico basándose en las IPs de partida/destino. Capturar tráfi co y ejecutar pruebas con un host (pc) como servidor y otro como cliente, con distintas configuraciones de protocolos y configuraciones entre:
 a) Dos computadoras en un mismo grupo (no olvidar configurar el capturador en loopback)
