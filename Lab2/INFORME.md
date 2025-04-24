@@ -73,7 +73,6 @@ En una topología multi-path, el tráfico puede ser distribuido entre múltiples
 ---
 ## Desarrollo
 
-(1)
 Como primer paso en el desarrollo del laboratorio, se procedió a la configuración manual de direcciones IP estáticas en las notebooks del grupo. Las IPs fueron asignadas respetando el rango de red definido para cada grupo, asegurando que no existieran conflictos de direcciones duplicadas:
 
   <p align="center">
@@ -84,20 +83,42 @@ Como primer paso en el desarrollo del laboratorio, se procedió a la configuraci
 
 Una vez configuradas las IPs en cada notebook, se realizaron pruebas de conectividad mediante el protocolo ICMP, utilizando el comando ping. Inicialmente, se comprobó la conexión entre hosts pertenecientes al mismo grupo y conectados al mismo switch. Esta prueba permitió verificar la correcta configuración de la interfaz de red, el estado operativo del cableado y la funcionalidad básica del switch. Posteriormente, se amplió la prueba a la comunicación entre hosts de distintos grupos, conectados a través de switches y routers intermedios. Esto permitió validar la interoperabilidad entre subredes y comprobar que las rutas necesarias estaban correctamente definidas o disponibles para el paso de paquetes entre diferentes segmentos de la red. 
 
-(2)
 Para llevar a cabo las pruebas de rendimiento de red, se utilizó la herramienta iperf3, descargada desde https://iperf.fr. Esta herramienta permite medir parámetros clave como el ancho de banda, la latencia y la estabilidad de la conexión, mediante una arquitectura cliente-servidor. En nuestro caso, se ejecutó sobre sistemas Windows, desde la línea de comandos, usando la versión iperf3.exe.
-
 Durante el trabajo, se utilizaron varios servidores públicos disponibles en Internet para realizar pruebas reales desde los equipos del laboratorio. En todos los casos, se configuró iperf3 como cliente, con distintos parámetros de configuración. A continuación se describen los principales aspectos explorados:
 
-a) Protocolos TCP y UDP: Por defecto, iperf3 utiliza el protocolo TCP. Para realizar pruebas con UDP, se empleó el parámetro -u.
+### **Protocolos TCP y UDP**
+
+Por defecto, iperf3 utiliza el protocolo TCP. Para realizar pruebas con UDP, se empleó el parámetro -u.
+
+```
 TCP: ./iperf3.exe -c iperf.he.net -p 5201
+```
+
+En la siguiente imagen se observa el resultado de una prueba TCP, con un ancho de banda estable de aproximadamente 41.2 Mbits/sec:
+
+  <p align="center">
+      <img src="./Capturas/Iperf 1.png" alt="ISI" width="600"/>
+  </p>
+  <p align="center">texto??.</p>
+  <br> 
+
+```
 UDP: ./iperf3.exe -u -c iperf.he.net -p 5201
+```
 
-b) Número y tamaño de paquetes: Aunque en las pruebas realizadas no se modificó explícitamente el tamaño de los paquetes, iperf3 permite configurar el tamaño del buffer (y por ende el tamaño de los paquetes) con el parámetro -l. Este aspecto podría explorarse más a fondo en pruebas futuras.
+En esta prueba UDP se solicitó un ancho de banda de 100 Mbits/sec. El resultado muestra una tasa efectiva de 98.7 Mbits/sec con una pérdida muy baja de paquetes (0.1%):
 
-c) Frecuencia/tiempo: Las pruebas por defecto duran 10 segundos, pero pueden ajustarse con el parámetro -t. En este caso, se mantuvo la duración por defecto. Este valor determina la cantidad total de datos transmitidos durante la prueba.
+  <p align="center">
+      <img src="./Capturas/Iperf 2.png" alt="ISI" width="600"/>
+  </p>
+  <p align="center">texto??.</p>
+  <br> 
 
-d) Ancho de banda: En las pruebas con protocolo UDP, se especificó el ancho de banda deseado utilizando el parámetro -b. Por ejemplo, -b 0 solicita el mayor ancho de banda posible dentro de los límites de la red.
+**Número y tamaño de paquetes**: Aunque en las pruebas realizadas no se modificó explícitamente el tamaño de los paquetes, iperf3 permite configurar el tamaño del buffer (y por ende el tamaño de los paquetes) con el parámetro -l. Este aspecto podría explorarse más a fondo en pruebas futuras.
+
+**Frecuencia/tiempo**: Las pruebas por defecto duran 10 segundos, pero pueden ajustarse con el parámetro -t. En este caso, se mantuvo la duración por defecto. Este valor determina la cantidad total de datos transmitidos durante la prueba.
+
+**Ancho de banda**: En las pruebas con protocolo UDP, se especificó el ancho de banda deseado utilizando el parámetro -b. Por ejemplo, -b 0 solicita el mayor ancho de banda posible dentro de los límites de la red.
 ./iperf3.exe -b 0 -u -c iperf.he.net -p 5201 → prueba UDP con ancho de banda ilimitado.
 ./iperf3.exe -b 0 -c iperf.he.net -p 5201 → prueba TCP (el -b se ignora en este caso, ya que TCP ajusta automáticamente la tasa de envío).
 
