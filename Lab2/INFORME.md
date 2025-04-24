@@ -133,18 +133,22 @@ Las pruebas por defecto duran 10 segundos, pero pueden ajustarse con el parámet
 **Ancho de banda**
 
 En las pruebas con protocolo UDP, se especificó el ancho de banda deseado utilizando el parámetro -b. Por ejemplo, -b 0 solicita el mayor ancho de banda posible dentro de los límites de la red.
+
 ```
 ./iperf3.exe -b 0 -u -c iperf.he.net -p 5201 → prueba UDP con ancho de banda ilimitado.
 ```
+
 Al no especificar un límite de ancho de banda (usando -b 0), iperf intenta usar el máximo posible. El resultado es un throughput limitado solo por las condiciones de red
   <p align="center">
       <img src="./Capturas/Iperf udp b0.png" alt="ISI" width="600"/>
   </p>
   <p align="center">texto??.</p>
   <br> 
+
 ```
 ./iperf3.exe -b 0 -c iperf.he.net -p 5201 → prueba TCP (el -b se ignora en este caso, ya que TCP ajusta automáticamente la tasa de envío).
 ```
+
 Como el parámetro -b se ignora en TCP, el ancho de banda se mantiene constante, como se observa nuevamente en esta prueba con ~41.2 Mbits/sec:
   <p align="center">
       <img src="./Capturas/Iperf 2.png" alt="ISI" width="600"/>
