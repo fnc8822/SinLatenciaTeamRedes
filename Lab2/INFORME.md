@@ -73,13 +73,35 @@ En una topología multi-path, el tráfico puede ser distribuido entre múltiples
 ---
 ## Desarrollo
 
-Primero se configuraron las notebooks con IPs fijas, se comprobó conexión con paquetes ICMP entre host conectados al mismo switch y otros dispositivos de otros grupos:
+1) Configurar los dispositivos/PCs con IPs fijas y comprobar conexión con paquetes ICMP entre hosts bajo el mismo switch, y entre distintos grupos.
+
+Como primer paso en el desarrollo del laboratorio, se procedió a la configuración manual de direcciones IP estáticas en las notebooks del grupo. Las IPs fueron asignadas respetando el rango de red definido para cada grupo, asegurando que no existieran conflictos de direcciones duplicadas:
 
   <p align="center">
       <img src="./Capturas/IP estatica.png" alt="ISI" width="600"/>
   </p>
-  <p align="center">Figura 1: IP fija.</p>
+  <p align="center">Configuración IP fija.</p>
   <br> 
+
+Una vez configuradas las IPs en cada notebook, se realizaron pruebas de conectividad mediante el protocolo ICMP, utilizando el comando ping. Inicialmente, se comprobó la conexión entre hosts pertenecientes al mismo grupo y conectados al mismo switch. Esta prueba permitió verificar la correcta configuración de la interfaz de red, el estado operativo del cableado y la funcionalidad básica del switch. Posteriormente, se amplió la prueba a la comunicación entre hosts de distintos grupos, conectados a través de switches y routers intermedios. Esto permitió validar la interoperabilidad entre subredes y comprobar que las rutas necesarias estaban correctamente definidas o disponibles para el paso de paquetes entre diferentes segmentos de la red. 
+
+
+2) Descargar iperf3: https://iperf.fr y resumir los principales comandos para realizar pruebas con
+gurando:
+
+a) Protocolos TCP y UDP
+b) Número y tamaño de paquetes
+c) Frecuencia/tiempo
+d) Ancho de banda
+3) Configurar Wireshark (o algún software de sniffing similar) para
+ltrar tráfico basándose en las IPs de partida/destino. Capturar tráfi co y ejecutar pruebas con un host (pc) como servidor y otro como cliente, con distintas configuraciones de protocolos y configuraciones entre:
+a) Dos computadoras en un mismo grupo (no olvidar configurar el capturador en loopback)
+b) Una computadora de un grupo y computadoras de al menos otros 2 (dos) grupos
+Documentar capturas de wireshark y las consolas corriendo iperf.
+4) Elaborar conclusiones sobre los siguientes aspectos:
+¿Cuál es el ancho de banda promedio de la prueba? ¿Cuánto duró la prueba? ¿Cuál es el tamaño promedio de paquetes? ¿Observas alguna diferencia entre UDP y TCP? ¿Observamos relación entre alguno de los parámetros de la prueba y la pérdida de paquetes?
+5) Ejecutar una prueba como cliente desde una computadora del grupo hacia un servidor propuesto en clase.
+Documentar los resultados y elaborar conclusiones sobre los aspectos del punto 4, además de comparar con los resultados de las pruebas del punto 3)
 
 ---
 ## Resultados
