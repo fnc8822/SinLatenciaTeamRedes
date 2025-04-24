@@ -4,7 +4,7 @@
 **Materia: Redes de Computadoras**
 
 **Profesores**
-- Facundo Oliva Cuneo (Teorico).
+- Facundo Oliva Cuneo (Teórico).
 - Santiago Martín Henn (Laboratorios).
 
 **Fecha: 24-04-2025** 
@@ -33,7 +33,7 @@ En el contexto actual de redes de computadoras, la eficiencia, robustez y capaci
 El presente informe se centra en el estudio e implementación de topologías de red multi-path, con énfasis en la evaluación del rendimiento en un entorno físico de laboratorio. Se abordan objetivos como la configuración de enrutamiento estático y dinámico, y el uso de herramientas de análisis como iperf3 para pruebas de red TCP y UDP, así como Wireshark para la captura y filtrado de tráfico. Se diseñó una parte de la red, configurando equipos con IPs fijas y evaluando la conectividad y el rendimiento entre nodos tanto de nuestro grupo como de distintos grupos. Las pruebas incluyen parámetros como el tamaño y frecuencia de paquetes, ancho de banda y duración, comparando resultados entre protocolos y distintas configuraciones. Finalmente, se analizan los datos recolectados para extraer conclusiones sobre el comportamiento de la red y el impacto de las decisiones de configuración sobre su performance.
 
 ---
-## Marco teorico
+## Marco teórico
 
 **Topologías Multi-path**
 
@@ -72,6 +72,14 @@ En una topología multi-path, el tráfico puede ser distribuido entre múltiples
 
 ---
 ## Desarrollo
+
+Primero se configuraron las notebooks con IPs fijas, se comprobó conexión con paquetes ICMP entre host conectados al mismo switch y otros dispositivos de otros grupos:
+
+  <p align="center">
+      <img src="./capturas/IP estatica.png" alt="ISI" width="600"/>
+  </p>
+  <p align="center">Figura 1: IP fija.</p>
+  <br> 
 
 ---
 ## Resultados
