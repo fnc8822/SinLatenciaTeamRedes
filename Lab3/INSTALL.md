@@ -106,29 +106,29 @@ Tabla de direccionamiento:
 
 ### 2.3 Configuración básica de OSPF
 Configuración del Router R1:
-```
-ciscoR1(config)# router ospf 1
+```cisco
+R1(config)# router ospf 1
 R1(config-router)# network 10.1.1.0 0.0.0.255 area 0
 R1(config-router)# network 192.168.1.0 0.0.0.3 area 0
 R1(config-router)# network 192.168.2.0 0.0.0.3 area 0
 ```
 Configuración del Router R2:
-```
-ciscoR2(config)# router ospf 1
+```cisco
+R2(config)# router ospf 1
 R2(config-router)# network 10.2.2.0 0.0.0.255 area 0
 R2(config-router)# network 192.168.1.0 0.0.0.3 area 0
 R2(config-router)# network 192.168.3.0 0.0.0.3 area 0
 ```
 Configuración del Router R3:
-```
-ciscoR3(config)# router ospf 1
+```cisco
+R3(config)# router ospf 1
 R3(config-router)# network 10.3.3.0 0.0.0.255 area 1
 R3(config-router)# network 192.168.3.0 0.0.0.3 area 1
 R3(config-router)# network 192.168.4.0 0.0.0.3 area 1
 ```
 Configuración del Router R4:
-```
-ciscoR4(config)# router ospf 1
+```cisco
+R4(config)# router ospf 1
 R4(config-router)# network 10.4.4.0 0.0.0.255 area 1
 R4(config-router)# network 192.168.2.0 0.0.0.3 area 1
 R4(config-router)# network 192.168.4.0 0.0.0.3 area 1
@@ -140,8 +140,8 @@ R4(config-router)# network 192.168.4.0 0.0.0.3 area 1
 
 ### 2.5 Verificación del funcionamiento
 Comandos de verificación utilizados:
-```
-cisco# Verificar tabla de enrutamiento
+```cisco
+# Verificar tabla de enrutamiento
 show ip route
 
 # Verificar vecinos OSPF
