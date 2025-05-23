@@ -6,6 +6,7 @@
 - Santiago Martín Henn (Laboratorios).
 
 ---
+
 **Nombre del grupo: Sin Latencia Team**
 
 **Nombres de los integrantes**
@@ -19,6 +20,7 @@
 - nicoluduena@mi.unc.edu.ar
 - juan.sassi@mi.unc.edu.ar
 - francocirrincione@mi.unc.edu.ar
+
 ---
 
 ## 1. MARCO TEÓRICO
@@ -75,6 +77,7 @@ OSPF utiliza una jerarquía de áreas para mejorar la escalabilidad:
 Área Backbone (Área 0): Área central que conecta todas las demás áreas
 Áreas regulares: Áreas que se conectan al backbone
 Áreas especiales: Stub, NSSA, etc.
+
 ---
 
 ## 2. DESARROLLO DEL TRABAJO PRÁCTICO
@@ -198,6 +201,7 @@ La Base de Datos de Estado de Enlace mostró:
 Router LSAs: Información sobre cada router y sus enlaces
 Network LSAs: Información sobre redes multi-acceso
 Summary LSAs: Información entre áreas (cuando se configuraron múltiples áreas)
+
 ---
 
 ## 4. CONCLUSIONES
@@ -230,6 +234,7 @@ Diseño de redes corporativas medianas y grandes
 Implementación de redundancia y tolerancia a fallos
 Optimización del rendimiento de la red mediante control de costos
 Integración con proveedores de servicios de Internet
+
 ---
 
 ## 5. REFERENCIAS
