@@ -106,25 +106,33 @@ Tabla de direccionamiento:
 
 ### 2.3 Configuración básica de OSPF
 Configuración del Router R1:
+```
 ciscoR1(config)# router ospf 1
 R1(config-router)# network 10.1.1.0 0.0.0.255 area 0
 R1(config-router)# network 192.168.1.0 0.0.0.3 area 0
 R1(config-router)# network 192.168.2.0 0.0.0.3 area 0
+```
 Configuración del Router R2:
+```
 ciscoR2(config)# router ospf 1
 R2(config-router)# network 10.2.2.0 0.0.0.255 area 0
 R2(config-router)# network 192.168.1.0 0.0.0.3 area 0
 R2(config-router)# network 192.168.3.0 0.0.0.3 area 0
+```
 Configuración del Router R3:
+```
 ciscoR3(config)# router ospf 1
 R3(config-router)# network 10.3.3.0 0.0.0.255 area 1
 R3(config-router)# network 192.168.3.0 0.0.0.3 area 1
 R3(config-router)# network 192.168.4.0 0.0.0.3 area 1
+```
 Configuración del Router R4:
+```
 ciscoR4(config)# router ospf 1
 R4(config-router)# network 10.4.4.0 0.0.0.255 area 1
 R4(config-router)# network 192.168.2.0 0.0.0.3 area 1
 R4(config-router)# network 192.168.4.0 0.0.0.3 area 1
+```
 
 ### 2.4 Configuración de áreas OSPF
 Área A (Área 0 - Backbone): R1 y R2
@@ -132,6 +140,7 @@ R4(config-router)# network 192.168.4.0 0.0.0.3 area 1
 
 ### 2.5 Verificación del funcionamiento
 Comandos de verificación utilizados:
+```
 cisco# Verificar tabla de enrutamiento
 show ip route
 
@@ -146,10 +155,14 @@ show ip ospf interface
 
 # Verificar información del protocolo OSPF
 show ip protocols
-2.6 Modificación de costos OSPF
+```
+
+### 2.6 Modificación de costos OSPF
 Para observar el comportamiento del protocolo, se modificaron los costos:
-ciscoR2(config)# interface serial0/0/0
+```cisco
+R2(config)# interface serial0/0/0
 R2(config-if)# ip ospf cost 100
+```
 Pruebas con traceroute:
 
 Antes de la modificación: Ruta directa R1-R2
@@ -157,11 +170,14 @@ Después de la modificación: Ruta alternativa R1-R4-R3-R2
 
 ### 2.7 Configuración de ruta predeterminada
 En R1 se configuró:
-ciscoR1(config)# interface loopback0
+```cisco
+R1(config)# interface loopback0
 R1(config-if)# ip address 203.0.113.1 255.255.255.255
 R1(config)# ip route 0.0.0.0 0.0.0.0 loopback0
 R1(config)# router ospf 1
 R1(config-router)# default-information originate
+```
+
 ---
 
 ## 3. ANÁLISIS DE RESULTADOS
