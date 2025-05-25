@@ -84,54 +84,190 @@ OSPF utiliza una jerarquía de áreas para mejorar la escalabilidad:
 ### 2.1 Diseño de la topología
 La topología implementada consta de:
 
-4 routers (R1, R2, R3, R4) interconectados
-4 switches (S1, S2, S3, S4) conectados a cada router
-Hosts conectados a cada switch
-Enlaces punto a punto entre routers
+5 routers (R1, R2, R3, R4, R5) interconectados
+1 switch (S1) conectados a cada router
 
-    [PC1]--[S1]--[R1]-------[R2]--[S2]--[PC2]
-                   |         |
-                   |         |
-    [PC4]--[S4]--[R4]-------[R3]--[S3]--[PC3]
+<br>
+<p align="center">
+    <img src="./capturas/diagrama de red.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 1: Diagrama de red.</p>
+<br>
 
 ### 2.2 Esquema de direccionamiento IP
 Tabla de direccionamiento:
 
-<br>
-<p align="center">
-    <img src="./capturas/tabla.png" alt="ISI" width="600"/>
-</p>
-<p align="center">Figura 1: Tabla de direccionamiento.</p>
-<br>
+### 2.3 Configuración de Routers
+```cisco
+# ========================================
+# CONFIGURACIÓN ROUTER R1
+# ========================================
+Router> enable
+Router# configure terminal
+Router(config)# hostname R1
+R1(config)# 
 
-### 2.3 Configuración básica de OSPF
-Configuración del Router R1:
-```cisco
-R1(config)# router ospf 1
-R1(config-router)# network 10.1.1.0 0.0.0.255 area 0
-R1(config-router)# network 192.168.1.0 0.0.0.3 area 0
-R1(config-router)# network 192.168.2.0 0.0.0.3 area 0
-```
-Configuración del Router R2:
-```cisco
-R2(config)# router ospf 1
-R2(config-router)# network 10.2.2.0 0.0.0.255 area 0
-R2(config-router)# network 192.168.1.0 0.0.0.3 area 0
-R2(config-router)# network 192.168.3.0 0.0.0.3 area 0
-```
-Configuración del Router R3:
-```cisco
-R3(config)# router ospf 1
-R3(config-router)# network 10.3.3.0 0.0.0.255 area 1
-R3(config-router)# network 192.168.3.0 0.0.0.3 area 1
-R3(config-router)# network 192.168.4.0 0.0.0.3 area 1
-```
-Configuración del Router R4:
-```cisco
-R4(config)# router ospf 1
-R4(config-router)# network 10.4.4.0 0.0.0.255 area 1
-R4(config-router)# network 192.168.2.0 0.0.0.3 area 1
-R4(config-router)# network 192.168.4.0 0.0.0.3 area 1
+# Configurar interfaces
+R1(config)# interface fastethernet 0/0
+R1(config-if)# ip address 10.0.1.1 255.255.255.252
+R1(config-if)# description Enlace R1-R2 (crossover)
+R1(config-if)# no shutdown
+R1(config-if)# exit
+
+R1(config)# interface fastethernet 0/1
+R1(config-if)# ip address 10.0.2.1 255.255.255.252
+R1(config-if)# description Enlace R1-R3 (crossover)
+R1(config-if)# no shutdown
+R1(config-if)# exit
+
+R1(config)# interface loopback 0
+R1(config-if)# ip address 1.1.1.1 255.255.255.255
+R1(config-if)# description Loopback (simulacion ISP)
+R1(config-if)# exit
+
+R1(config)# exit
+R1# write memory
+
+# ========================================
+# CONFIGURACIÓN ROUTER R2
+# ========================================
+Router> enable
+Router# configure terminal
+Router(config)# hostname R2
+R2(config)# 
+
+# Configurar interfaces
+R2(config)# interface fastethernet 0/0
+R2(config-if)# ip address 192.168.1.1 255.255.255.0
+R2(config-if)# description Conectado a S1 (straight)
+R2(config-if)# no shutdown
+R2(config-if)# exit
+
+R2(config)# interface fastethernet 0/1
+R2(config-if)# ip address 10.0.1.2 255.255.255.252
+R2(config-if)# description Enlace R2-R1 (crossover)
+R2(config-if)# no shutdown
+R2(config-if)# exit
+
+R2(config)#interface vlan 1
+R2(config-if)#ip address 10.0.3.1 255.255.255.252
+R2(config-if)#no shutdown
+R2(config-if)#exit
+R2(config)#interface range FastEthernet0/1/0 - 3
+R2(config-if-range)#switchport access vlan 1
+R2(config-if-range)#no shutdown
+R2(config-if-range)#exit
+
+R2(config)# exit
+R2# write memory
+
+# ========================================
+# CONFIGURACIÓN ROUTER R3
+# ========================================
+Router> enable
+Router# configure terminal
+Router(config)# hostname R3
+R3(config)# 
+
+# Configurar interfaces
+R3(config)# interface fastethernet 0/0
+R3(config-if)# ip address 10.0.2.2 255.255.255.252
+R3(config-if)# description Enlace R3-R1 (crossover)
+R3(config-if)# no shutdown
+R3(config-if)# exit
+
+R3(config)# interface fastethernet 0/1
+R3(config-if)# ip address 10.0.3.2 255.255.255.252
+R3(config-if)# description Enlace R3-R2 (crossover)
+R3(config-if)# no shutdown
+R3(config-if)# exit
+
+R3(config)#interface vlan 1
+R3(config-if)#ip address 10.0.4.1 255.255.255.252
+R3(config-if)#no shutdown
+R3(config-if)#exit
+R3(config)#interface range FastEthernet0/1/0 - 1
+R3(config-if-range)#switchport access vlan 1
+R3(config-if-range)#no shutdown
+R3(config-if-range)#exit
+
+R3(config)#interface vlan 2
+R3(config-if)#ip address 10.0.5.1 255.255.255.252
+R3(config-if)#no shutdown
+R3(config-if)#exit
+R3(config)#interface range FastEthernet0/1/2 - 3
+R3(config-if-range)#switchport access vlan 2
+R3(config-if-range)#no shutdown
+R3(config-if-range)#exit
+
+R3(config)# exit
+R3# write memory
+
+# ========================================
+# CONFIGURACIÓN ROUTER R4
+# ========================================
+Router> enable
+Router# configure terminal
+Router(config)# hostname R4
+R4(config)# 
+
+# Configurar interfaces
+R4(config)# interface fastethernet 0/0
+R4(config-if)# ip address 192.168.2.1 255.255.255.0
+R4(config-if)# description Conectado a h4 (straight)
+R4(config-if)# no shutdown
+R4(config-if)# exit
+
+R4(config)# interface fastethernet 0/1
+R4(config-if)# ip address 10.0.4.2 255.255.255.252
+R4(config-if)# description Enlace R4-R3 (crossover)
+R4(config-if)# no shutdown
+R4(config-if)# exit
+
+R4(config)#interface vlan 1
+R4(config-if)#ip address 10.0.6.1 255.255.255.252
+R4(config-if)#no shutdown
+R4(config-if)#exit
+R4(config)#interface range FastEthernet0/1/0 - 3
+R4(config-if-range)#switchport access vlan 1
+R4(config-if-range)#no shutdown
+R4(config-if-range)#exit
+
+R4(config)# exit
+R4# write memory
+
+# ========================================
+# CONFIGURACIÓN ROUTER R5
+# ========================================
+Router> enable
+Router# configure terminal
+Router(config)# hostname R5
+R5(config)# 
+
+# Configurar interfaces
+R5(config)# interface fastethernet 0/0
+R5(config-if)# ip address 192.168.3.1 255.255.255.0
+R5(config-if)# description Conectado a h5 (straight)
+R5(config-if)# no shutdown
+R5(config-if)# exit
+
+R5(config)# interface fastethernet 0/1
+R5(config-if)# ip address 10.0.5.2 255.255.255.252
+R5(config-if)# description Enlace R5-R3 (crossover)
+R5(config-if)# no shutdown
+R5(config-if)# exit
+
+R5(config)#interface vlan 1
+R5(config-if)#ip address 10.0.6.2 255.255.255.252
+R5(config-if)#no shutdown
+R5(config-if)#exit
+R5(config)#interface range FastEthernet0/1/0 - 3
+R5(config-if-range)#switchport access vlan 1
+R5(config-if-range)#no shutdown
+R5(config-if-range)#exit
+
+R5(config)# exit
+R5# write memory
 ```
 
 ### 2.4 Configuración de áreas OSPF
