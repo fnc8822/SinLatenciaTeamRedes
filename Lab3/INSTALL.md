@@ -95,7 +95,22 @@ La topología implementada consta de:
 <br>
 
 ### 2.2 Esquema de direccionamiento IP
-Tabla de direccionamiento:
+Tablas de direccionamiento:
+
+<br>
+<p align="center">
+    <img src="./capturas/tabla ipv4 hosts.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 1: Tabla de direccionamiento IPv4 hosts.</p>
+<br>
+
+<br>
+<p align="center">
+    <img src="./capturas/tabla ipv4 routers.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 1: Tabla de direccionamiento IPv4 routers.</p>
+<br>
+
 
 ### 2.3 Configuración de Routers
 ```cisco
