@@ -58,9 +58,11 @@ tránsito?
 - e) Buscar las conexiones del AS conectándome a alguna red distinta a la del punto anterior (puede ser 4G/5G de mi teléfono, alguna red en la facultad, etc.). ¿Qué diferencias/similitudes puedo identicar?
 - f) Investigar algún problema en enrutamiento BGP que haya tenido un impacto en servicios de red a nivel nacional/internacional. Elaborar un resumen de las causas y las consecuencias.
 
-## Respuestas:
-- a) El BGP (Border Gateway Protocol) es un protocolo de enrutamiento de capa de aplicación (capa 7) que opera sobre TCP, es de tipo vector de ruta diseñado para intercambiar información de enrutamiento entre diferentes Sistemas Autónomos (AS) en Internet. Es el protocolo principal de enrutamiento interdominio, y permite construir la tabla de enrutamiento global de Internet, asegurando que los paquetes lleguen a su destino a través del mejor camino disponible.
-- b) Funcionamiento del **BGP** y procedimientos funcionales
+## **Respuestas:**
+### **a) El BGP (Border Gateway Protocol)** 
+Es un protocolo de enrutamiento de capa de aplicación (capa 7) que opera sobre TCP, es de tipo vector de ruta diseñado para intercambiar información de enrutamiento entre diferentes Sistemas Autónomos (AS) en Internet. Es el protocolo principal de enrutamiento interdominio, y permite construir la tabla de enrutamiento global de Internet, asegurando que los paquetes lleguen a su destino a través del mejor camino disponible.
+
+### **b) Funcionamiento del **BGP** y procedimientos funcionales**
 BGP funciona a través de sesiones entre pares o vecinos (peers) que intercambian rutas y atributos. Sus procedimientos funcionales clave son:
     - 1. **Adquisición de vecino (Neighbor Acquisition):**
         * Dos routers BGP (vecinos) establecen una **conexión TCP en el puerto 179**.
@@ -89,7 +91,7 @@ Todos los mensajes BGP comienzan con un **header de 19 bytes**, que incluye:
 
 Luego, cada tipo de mensaje tiene su propio formato específico (por ejemplo, los UPDATE incluyen prefijos IP, atributos de ruta, etc.).
 
-- **c) Diferencia entre eBGP e iBGP**
+### **c) Diferencia entre eBGP e iBGP**
 
 | Característica           | **eBGP** (External BGP)                             | **iBGP** (Internal BGP)                           |
 | ------------------------ | --------------------------------------------------- | ------------------------------------------------- |
@@ -99,10 +101,68 @@ Luego, cada tipo de mensaje tiene su propio formato específico (por ejemplo, lo
 | TTL predeterminado       | 1 (router vecino debe estar directamente conectado) | 255 (se puede enrutar dentro del AS)              |
 | Uso típico               | Conexiones entre ISPs o redes grandes               | Distribución interna de rutas aprendidas por eBGP |
 
-- En nuestro ejemplo **AS2** es de transito. y sirve de pente entre AS1 y AS3.
+En nuestro ejemplo **AS2** es de transito. y sirve de pente entre AS1 y AS3.
+
+---- 
+
+### **d) Conexionado AS actual.** 
+Actualmente mi conexion publica pertenece al AS11664, administrado por Techtel LMDS Comunicaciones Interactivas S.A., un proveedor de servicios de telecomunicaciones en Argentina.Según la herramienta bgpview.io, el AS11664 mantiene conexiones eBGP con al menos 8 sistemas autónomos distintos. Estos incluyen:
+    - AS3549 (Level 3 LATAM)
+    - AS6762 (Telecom Italia Sparkle)
+    - AS10481 (Prima S.A. - Arnet)
+    - AS3356 (Lumen / Level 3)
+    - AS16814, AS3816, entre otros.
+
+Estas conexiones permiten el intercambio de rutas con diferentes redes regionales e internacionales, cumpliendo el rol de un AS de tránsito, al transportar tráfico entre otros AS que no son de su propiedad directa.
+
+<br>
+<p align="center">
+    <img src="./imagenes/imagen02_2_d.png" alt="ISI" width="600"/>
+</p>
+<p align="center">Figura 2: Grafico de los AS a uno o dos grados de separación.</p>
+<br>
+
+Este gráfico muestra visualmente las relaciones de interconexión que el AS11664 mantiene directamente con otros AS, así como las conexiones de segundo grado. Estas relaciones son fundamentales para garantizar redundancia, rutas alternativas y eficiencia en el tránsito de datos.
+
+--- 
+
+### **e) conexionado a una Red distinta.** 
+Para esta parte, se realizó una prueba de conexión utilizando **una red móvil 4G de la operadora Claro Argentina**. Al consultar la IP pública, se determinó que la conexión pertenece al **AS22085** (Claro Argentina).
+
+    - Comparación entre AS11664 y AS22085
+
+| Característica              | **AS11664 (Techtel)**                          | **AS22085 (Claro Argentina)**                   |
+| --------------------------- | ---------------------------------------------- | ----------------------------------------------- |
+| Tipo de proveedor           | ISP regional / corporativo                     | ISP móvil y fijo de alcance nacional            |
+| Tipo de conexión analizada  | Conexión residencial/corporativa fija          | Red móvil 4G                                    |
+| Número de conexiones eBGP   | Al menos 8                                     | Al menos 6                                      |
+| AS de tránsito              | Sí                                             | Sí                                              |
+| Infraestructura orientada a | Empresas, enlaces dedicados                    | Usuarios móviles, consumo masivo                |
+| Latencia promedio observada | Menor, más estable                             | Mayor variabilidad debido a la red móvil        |
+
+    Conclusión:
+    Ambos AS operan como proveedores de tránsito con múltiples conexiones eBGP. Sin embargo, AS22085 prioriza la conectividad móvil , mientras que AS11664 se enfoca en servicios fijos y empresariales. Las rutas entre ellos difieren, pero ambos permiten acceso completo a la red global mediante BGP.
+
 ---
 
+### **f) Problema de enrutamiento BGP con impacto internacional: Caso de Cloudflare (2019)**
 
+- Contexto del incidente
+    El **24 de junio de 2019**, Cloudflare —una de las redes de distribución de contenido (CDN) más grandes del mundo— experimentó interrupciones globales en sus servicios debido a un **mal anuncio de rutas BGP**.
+
+- Causas del problema
+    * El **ISP Verizon (AS701)** aceptó rutas incorrectas originadas por un pequeño proveedor, **Allegheny Technologies (AS396531)**, que había sido mal configurado por **DQE Communications (AS33154)**.
+    * Estas rutas **exageraban la cercanía de ciertos prefijos IP a través de Allegheny**, redirigiendo tráfico masivo que no podía manejar.
+    * Verizon propagó estas rutas incorrectas a otros operadores, lo que afectó a miles de usuarios.
+
+- Consecuencias
+    * Tráfico global fue desviado erróneamente hacia infraestructuras no preparadas para manejarlo.
+    * Servicios como Cloudflare, Amazon, Facebook y otros experimentaron degradaciones de rendimiento o caídas parciales.
+    * Se evidenció la **falta de filtrado BGP adecuado** por parte de operadores importantes.
+    * A raíz de esto, se reforzó la necesidad de implementar **RPKI (Resource Public Key Infrastructure)** y **validaciones estrictas de prefijos**.
+
+- Conclusión
+    * Este caso demostró cómo **una mala configuración BGP en una red pequeña puede escalar rápidamente** y afectar a millones de usuarios, si no existen mecanismos de control y validación adecuados a nivel de los operadores de tránsito.
 
 ---
-#Parte II - Simulaciones y análisis
+# Parte II - Simulaciones y análisis
