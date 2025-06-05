@@ -78,7 +78,7 @@ Como primer paso en el desarrollo del laboratorio, se procedió a la configuraci
   <p align="center">
       <img src="./Capturas/IP estatica.png" alt="ISI" width="600"/>
   </p>
-  <p align="center">Configuración IP fija.</p>
+  <p align="center">Figura 1: Configuración IP fija.</p>
   <br> 
 
 Una vez configuradas las IPs en cada notebook, se realizaron pruebas de conectividad mediante el protocolo ICMP, utilizando el comando ping. Inicialmente, se comprobó la conexión entre hosts pertenecientes al mismo grupo y conectados al mismo switch. Esta prueba permitió verificar la correcta configuración de la interfaz de red, el estado operativo del cableado y la funcionalidad básica del switch. Posteriormente, se amplió la prueba a la comunicación entre hosts de distintos grupos, conectados a través de switches y routers intermedios. Esto permitió validar la interoperabilidad entre subredes y comprobar que las rutas necesarias estaban correctamente definidas o disponibles para el paso de paquetes entre diferentes segmentos de la red. 
@@ -99,7 +99,7 @@ En la siguiente imagen se observa el resultado de una prueba TCP, con un ancho d
   <p align="center">
       <img src="./Capturas/Iperf 1.png" alt="ISI" width="600"/>
   </p>
-  <p align="center">texto??.</p>
+  <p align="center">Figura 2: iperf con servidor publico.</p>
   <br> 
 
 ```
@@ -111,7 +111,7 @@ En esta prueba UDP se solicitó un ancho de banda de 100 Mbits/sec. El resultado
   <p align="center">
       <img src="./Capturas/Iperf udp.png" alt="ISI" width="600"/>
   </p>
-  <p align="center">texto??.</p>
+  <p align="center">Figura 3: iperf con UDP y servidor publico.</p>
   <br> 
 
 **Número y tamaño de paquetes**
@@ -123,7 +123,7 @@ Aunque no se configuró directamente el tamaño de los paquetes, en la siguiente
   <p align="center">
       <img src="./Capturas/iperf b0.png" alt="ISI" width="600"/>
   </p>
-  <p align="center">texto??.</p>
+  <p align="center">Figura 4: iperf sin limitacion de ancho de banda en TCP y servidor publico.</p>
   <br> 
 
 **Frecuencia/tiempo**
@@ -142,18 +142,18 @@ Al no especificar un límite de ancho de banda (usando -b 0), iperf intenta usar
   <p align="center">
       <img src="./Capturas/Iperf udp b0.png" alt="ISI" width="600"/>
   </p>
-  <p align="center">texto??.</p>
+  <p align="center">Figura 5: iperf UDP sin limitacion de ancho de banda y servidor publico.</p>
   <br> 
 
 ```
 ./iperf3.exe -b 0 -c iperf.he.net -p 5201 → prueba TCP (el -b se ignora en este caso, ya que TCP ajusta automáticamente la tasa de envío).
 ```
 
-Como el parámetro -b se ignora en TCP, el ancho de banda se mantiene constante, como se observa nuevamente en esta prueba con ~41.2 Mbits/sec:
+Tambien es importante aclarar que no logramos establecer conexion con el servidor dado de la consigna, lo cual es la razon por la que se utilizaron servidores publicos para esta parte del trabajo.
   <p align="center">
       <img src="./Capturas/Iperf 2.png" alt="ISI" width="600"/>
   </p>
-  <p align="center">texto??.</p>
+  <p align="center">Figura 6: iperf fallido sobre servidor de consigna.</p>
   <br> 
 
 Puerto personalizado (-p): Se realizaron pruebas contra distintos servidores escuchando en puertos específicos, utilizando el parámetro -p. Esto permitió conectarse a servicios alternativos de iperf y evitar conflictos en el entorno.
@@ -166,22 +166,80 @@ Ejemplos:
 
 Estas pruebas permitieron observar diferencias claras entre los comportamientos de TCP y UDP, así como evaluar el desempeño de los enlaces bajo distintas configuraciones. Se obtuvieron resultados realistas al utilizar servidores externos, con los que se pudo medir el impacto de la latencia, la congestión y la variabilidad del tráfico en Internet.
 
----
+Durante la actividad se realizó una prueba de conectividad utilizando el comando `ping` desde una máquina origen hacia un destino en la red interna asi como tambien la routeada. Esta herramienta permite verificar si un host es alcanzable a través del protocolo de red IP, utilizando paquetes ICMP (Internet Control Message Protocol) para enviar solicitudes de eco (*Echo Request*) y esperar respuestas correspondientes (*Echo Reply*). 
 
-3) Configurar Wireshark (o algún software de sniffing similar) para filtrar tráfico basándose en las IPs de partida/destino. Capturar tráfi co y ejecutar pruebas con un host (pc) como servidor y otro como cliente, con distintas configuraciones de protocolos y configuraciones entre:
-a) Dos computadoras en un mismo grupo (no olvidar configurar el capturador en loopback)
-b) Una computadora de un grupo y computadoras de al menos otros 2 (dos) grupos
-Documentar capturas de wireshark y las consolas corriendo iperf.
+<p align="center">
+    <img src="./Capturas/Ping + paquete Wireshark.png" alt="Ping inicial con captura" width="600"/> 
+</p>
+<p align="center">Figura 7: Comando `ping` ejecutado con captura en Wireshark activa.</p>
+<br>
 
-4) Elaborar conclusiones sobre los siguientes aspectos: ¿Cuál es el ancho de banda promedio de la prueba? ¿Cuánto duró la prueba? ¿Cuál es el tamaño promedio de paquetes? ¿Observas alguna diferencia entre UDP y TCP? ¿Observamos relación entre alguno de los parámetros de la prueba y la pérdida de paquetes?
+Al ejecutar el comando `ping`, simultáneamente se capturó el tráfico de red con Wireshark. En el análisis de las capturas, se observaron paquetes ICMP tanto de tipo 8 (*Echo Request*) como de tipo 0 (*Echo Reply*). Esto confirma que la comunicación es bidireccional y que el host de destino está respondiendo adecuadamente a las solicitudes de eco enviadas.
 
-5) Ejecutar una prueba como cliente desde una computadora del grupo hacia un servidor propuesto en clase. Documentar los resultados y elaborar conclusiones sobre los aspectos del punto 4, además de comparar con los resultados de las pruebas del punto 3)
+<p align="center">
+    <img src="./Capturas/Paquete Wireshark.png" alt="Paquete ICMP tipo Echo Request" width="600"/> 
+</p>
+<p align="center">Figura 8: Detalle de paquete ICMP tipo 8: Echo Request.</p>
+<br>
 
----
-## Resultados
+<p align="center">
+    <img src="./Capturas/Paquete Wireshark 2.png" alt="Paquete ICMP tipo Echo Reply" width="600"/> 
+</p>
+<p align="center">Figura 9: Detalle de paquete ICMP tipo 0: Echo Reply.</p>
+<br>
+
+Los paquetes ICMP observados presentan una estructura coherente con lo esperado para este tipo de tráfico. En particular, se puede destacar la presencia de los siguientes campos:
+
+- **Tipo**: `8` para solicitudes de eco (request) y `0` para respuestas (reply).
+- **Código**: `0`, lo que indica que no hay información adicional necesaria para este tipo de mensaje.
+- **Checksum**: utilizado para verificar la integridad del contenido del paquete ICMP.
+- **Identificador y Número de Secuencia**: estos permiten asociar cada solicitud con su respectiva respuesta. Se observó que el identificador se mantiene constante para una misma sesión de `ping`, mientras que el número de secuencia se incrementa con cada paquete enviado.
+
+<p align="center">
+    <img src="./Capturas/Paquete Wireshark 3.png" alt="Campos identificador y secuencia" width="600"/> 
+</p>
+<p align="center">Figura 10: Campos identificador y secuencia en ICMP para asociar request y reply.</p>
+<br>
+
+Además, se analizó el campo **TTL (Time To Live)** en los encabezados IP de los paquetes. Este valor indica la cantidad máxima de saltos (routers) que un paquete puede realizar antes de ser descartado. En los paquetes de respuesta capturados, el valor de TTL permite inferir la cantidad de saltos intermedios entre el origen y el destino. Por ejemplo:
+
+- Si se recibe un paquete con TTL = 64, y se sabe que muchos sistemas operativos inician el TTL en 64, se puede deducir que el paquete no pasó por ningún router (host local o red local).
+- Si en cambio el valor es menor (por ejemplo, 58), eso sugiere que el paquete atravesó varios saltos.
+
+<p align="center">
+    <img src="./Capturas/Wireshark + Ping.png" alt="Campo TTL" width="600"/> 
+</p>
+<p align="center">Figura 11: Visualización del campo TTL en el encabezado IP.</p>
+<br>
+
+También se observó que la longitud de los paquetes ICMP fue de aproximadamente **74 bytes**, considerando:
+
+- Encabezado IP: 20 bytes
+- Encabezado ICMP: 8 bytes
+- Datos del `ping`: 46 bytes
+
+<p align="center">
+    <img src="./Capturas/Paquete Wireshark 4.png" alt="Tamaño del paquete ICMP" width="600"/> 
+</p>
+<p align="center">Figura 12: Longitud total del paquete ICMP observada en la captura.</p>
+<br>
+
+En los campos de datos se encontró la información enviada por el comando `ping`, que habitualmente rellena el paquete con caracteres repetitivos para cumplir con una longitud estándar de carga útil (*payload*).
+
+<p align="center">
+    <img src="./Capturas/Wireshark + Ping 2.png" alt="Payload del paquete ICMP" width="600"/> 
+</p>
+<p align="center">Figura 13: Contenido del campo de datos (payload) del paquete ICMP.</p>
+<br>
+
+En conclusión, tanto los resultados del `ping` como los paquetes capturados en Wireshark muestran una comunicación correcta entre los hosts. La presencia ordenada de solicitudes y respuestas ICMP, los valores coherentes de identificador y secuencia, y los TTL razonables confirman que la red está operativa, que los paquetes se transmiten adecuadamente, y que no hay pérdida de información en el trayecto.
 
 ---
 ## Conclusion
+
+El trabajo realizado permitió experimentar con topologías multi-path, destacando su importancia en la mejora de la disponibilidad, el balanceo de carga y la tolerancia a fallos en redes modernas. La configuración manual de IPs y rutas, junto con el uso de herramientas como iperf3 y Wireshark, facilitó la evaluación práctica de parámetros clave como ancho de banda, latencia, pérdida de paquetes y comportamiento de los protocolos TCP y UDP.
+
+El análisis de tráfico con Wireshark permitió validar la correcta transmisión de paquetes y la integridad de la comunicación entre nodos.
 
 ---
 ## Referencias
