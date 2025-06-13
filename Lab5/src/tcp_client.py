@@ -15,34 +15,28 @@ os.makedirs(LOG_DIR, exist_ok=True)
 
 # Setup logging
 logging.basicConfig(
-    filename=os.path.join(LOG_DIR, "tcp_client.log"),  # Use LOG_DIR for the log file path
+    filename=os.path.join(LOG_DIR, "tcp_client.log"),
     level=logging.INFO,
-    format="%(asctime)s - %(message)s"
+    format="%(asctime)s.%(msecs)03d - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
 )
 
 def main():
     try:
-        # Create a TCP socket
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.connect((SERVER_HOST, SERVER_PORT))
         print(f"Connected to server at {SERVER_HOST}:{SERVER_PORT}")
 
         for i in range(1, PACKET_COUNT + 1):
-            # Create a unique packet
+            # Create a unique packet with a timestamp
+            send_time = time.time()
             packet = f"{GROUP_NAME}_{i}"
-            timestamp = time.time()
-
-            # Send the packet
             client_socket.sendall(packet.encode())
             print(f"Sent: {packet}")
+            logging.info(f"Sent: {packet}")
 
-            # Log the sent packet
-            logging.info(f"Sent: {packet} | Timestamp: {timestamp}")
-
-            # Wait for the configured interval
             time.sleep(SEND_INTERVAL)
 
-        print("All packets sent successfully.")
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:
