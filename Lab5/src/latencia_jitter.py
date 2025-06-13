@@ -1,14 +1,13 @@
 import os
 import re
 from statistics import mean
+from datetime import datetime
 import logging
 
 # Paths to logs
 LOG_DIR = os.path.join(os.path.dirname(__file__), "../logs")
 TCP_CLIENT_LOG = os.path.join(LOG_DIR, "tcp_client.log")
 TCP_SERVER_LOG = os.path.join(LOG_DIR, "tcp_server.log")
-UDP_CLIENT_LOG = os.path.join(LOG_DIR, "udp_client.log")
-UDP_SERVER_LOG = os.path.join(LOG_DIR, "udp_server.log")
 RESULTS_LOG = os.path.join(LOG_DIR, "latencia_jitter_results.log")
 
 # Setup logging for results
@@ -29,26 +28,25 @@ def parse_logs(client_log, server_log):
     client_data = {}
     with open(client_log, "r") as f:
         for line in f:
-            match = re.search(r"Sent: (SinLatenciaTeam_\d+) \| Timestamp: ([\d.]+)", line)
+            match = re.search(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) - Sent: (SinLatenciaTeam_\d+)", line)
             if match:
-                packet_id = match.group(1)
-                timestamp = float(match.group(2))
-                client_data[packet_id] = timestamp
+                timestamp = match.group(1)
+                packet_id = match.group(2)
+                # Convert timestamp to seconds since epoch
+                send_time = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S.%f").timestamp()
+                client_data[packet_id] = send_time
 
     # Extract received timestamps from server log
     server_data = {}
     with open(server_log, "r") as f:
         for line in f:
-            match = re.search(r"RECIBIDO.*: (SinLatenciaTeam_\d+)", line)
+            match = re.search(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) RECIBIDO.*: (SinLatenciaTeam_\d+)", line)
             if match:
-                packet_id = match.group(1)
-                timestamp_match = re.search(r"\[(.*?)\]", line)
-                if timestamp_match:
-                    timestamp = timestamp_match.group(1)
-                    # Convert timestamp to seconds
-                    timestamp_parts = timestamp.split(":")
-                    seconds = float(timestamp_parts[-1])
-                    server_data[packet_id] = seconds
+                timestamp = match.group(1)
+                packet_id = match.group(2)
+                # Convert timestamp to seconds since epoch
+                receive_time = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S.%f").timestamp()
+                server_data[packet_id] = receive_time
 
     return client_data, server_data
 
@@ -104,13 +102,6 @@ def main():
     else:
         print("TCP logs not found or incomplete.")
         logging.warning("TCP logs not found or incomplete.")
-
-    # Process UDP logs
-    if os.path.exists(UDP_CLIENT_LOG) and os.path.exists(UDP_SERVER_LOG):
-        process_logs(UDP_CLIENT_LOG, UDP_SERVER_LOG, "UDP")
-    else:
-        print("UDP logs not found or incomplete.")
-        logging.warning("UDP logs not found or incomplete.")
 
 if __name__ == "__main__":
     main()
