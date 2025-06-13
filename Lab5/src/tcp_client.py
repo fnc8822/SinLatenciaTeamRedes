@@ -15,7 +15,7 @@ os.makedirs(LOG_DIR, exist_ok=True)
 
 # Setup logging
 logging.basicConfig(
-    filename=os.path.join(LOG_DIR, "client_log.txt"),  # Use LOG_DIR for the log file path
+    filename=os.path.join(LOG_DIR, "tcp_client.log"),  # Use LOG_DIR for the log file path
     level=logging.INFO,
     format="%(asctime)s - %(message)s"
 )
