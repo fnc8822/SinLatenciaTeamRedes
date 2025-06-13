@@ -14,7 +14,7 @@ os.makedirs(LOG_DIR, exist_ok=True)
 def log_message(message: str):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
     with open(LOG_FILE, 'a') as f:
-        f.write(f'[{timestamp}] {message}\n')
+        f.write(f'{timestamp} {message}\n')
 
 
 def start_server():

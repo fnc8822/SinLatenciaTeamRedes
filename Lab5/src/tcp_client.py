@@ -4,7 +4,7 @@ import time
 import logging
 
 # Configuration
-SERVER_HOST = '192.168.100.3' 
+SERVER_HOST = '192.168.100.8' 
 SERVER_PORT = 5000        
 GROUP_NAME = "SinLatenciaTeam"
 PACKET_COUNT = 100
