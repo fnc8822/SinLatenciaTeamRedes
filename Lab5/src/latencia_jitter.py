@@ -103,5 +103,14 @@ def main():
         print("TCP logs not found or incomplete.")
         logging.warning("TCP logs not found or incomplete.")
 
+    # Process UDP logs
+    udp_client_log = os.path.join(LOG_DIR, "udp_client.log")
+    udp_server_log = os.path.join(LOG_DIR, "udp_server.log")
+    if os.path.exists(udp_client_log) and os.path.exists(udp_server_log):
+        process_logs(udp_client_log, udp_server_log, "UDP")
+    else:
+        print("UDP logs not found or incomplete.")
+        logging.warning("UDP logs not found or incomplete.")
+
 if __name__ == "__main__":
     main()
